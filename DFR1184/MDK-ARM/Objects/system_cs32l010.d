@@ -1,0 +1,11 @@
+.\objects\system_cs32l010.o: RTE\Device\CS32L010\system_cs32l010.c
+.\objects\system_cs32l010.o: ../Drivers/CMSIS/Device/CHIPSEA/CS32L010/Include/cs32l010.h
+.\objects\system_cs32l010.o: ../Drivers/CMSIS/Include/core_cm0plus.h
+.\objects\system_cs32l010.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\system_cs32l010.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+.\objects\system_cs32l010.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+.\objects\system_cs32l010.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+.\objects\system_cs32l010.o: ../Drivers/CMSIS/Device/CHIPSEA/CS32L010/Include/system_cs32l010.h
+.\objects\system_cs32l010.o: C:\Keil_v5\ARM\Packs\Chipsea\CS32L010_DFP\1.0.4\Device\HAL_Driver\inc\cs32l010_hal_rcc.h
+.\objects\system_cs32l010.o: C:\Keil_v5\ARM\Packs\Chipsea\CS32L010_DFP\1.0.4\Device\HAL_Driver\inc\cs32l010_hal_def.h
+.\objects\system_cs32l010.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
