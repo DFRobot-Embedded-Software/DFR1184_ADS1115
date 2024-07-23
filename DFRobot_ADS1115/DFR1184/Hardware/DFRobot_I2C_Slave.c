@@ -10,7 +10,7 @@ uint8_t i2c_TX_Send_data;
 
 extern uint8_t int_gpio_start_flag;
 extern uint8_t Addr0,Addr1;
-extern bool select_pin;
+extern uint8_t select_pin;
 
 /* i2c 的发送 接收 buffer */
 uint8_t pData[DATA_LEN_MAX]={0};

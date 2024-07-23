@@ -410,7 +410,7 @@ double ads1115_get_voltage_val(I2C_HandleTypeDef ads1115_I2cHandle,uint8_t point
             val=(double)ad_val*125/1000000.0;
         break;
         case(0x02):
-            val=(double)ad_val*62.5/1000.0*5;//加了运放 
+            val=(double)ad_val*62.5/1000.0*5.0;//加了运放 
         break;
         case(0x03):
             val=(double)ad_val*31.25/1000000.0;

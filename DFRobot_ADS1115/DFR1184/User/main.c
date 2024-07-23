@@ -14,9 +14,10 @@
 #include "stdlib.h"
 #include "string.h"
 
-uint8_t ReceiveData[3];
+uint8_t ReceiveData;
 uint8_t text[10];
-bool select_pin=0;
+uint8_t uart_buffer[5];
+uint8_t select_pin=0;
 bool senddata_flag=0;
 bool addr_change_flag=0;
 uint8_t Addr0=0,Addr1=0;
@@ -49,12 +50,12 @@ void key_init(void){
  */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if((ReceiveData[0]==0xf0)&&(ReceiveData[2]==0x0f)){
-		select_pin=ReceiveData[1];//1 A2  0 A1
+	if((ReceiveData>=0x01)&&(ReceiveData<=0x02))//数据0x02/0x01 
+	{
+		select_pin=ReceiveData;//2 A2  1 A1
 		senddata_flag=1;
 	}
-	//bug如遇到非3字节命令会出现错误 后期可以通过单字节接收解决 
-	HAL_UART_Receive_IT(&huart1, ReceiveData,sizeof(ReceiveData));		
+	HAL_UART_Receive_IT(&huart1, &ReceiveData,1);	
 }
 
 
@@ -102,16 +103,18 @@ int main(void)
 			else if(mode_flag==0){i2cInitSlave();i2cIRQConfig();}
 		}
 		//根据收到的命令决定是采集A1 还是A2通道的数据 函数内部在发送修改指令后10ms后才读数据
-		if(select_pin)//1 A2  0 A1
+		if(select_pin==2)//2 A2  1 A1
 			val=ads1115_get_voltage_val(i2c_ads1115,0x01,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_2,CONFIG_REG_L);
-		else
+		else if(select_pin==1)
 			val=ads1115_get_voltage_val(i2c_ads1115,0x01,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_1,CONFIG_REG_L);
 		//取到mv后两位，避免浮点数
 		temp_val=val*100;
 		//通过uart或者iic发送电压值
 		if((mode_flag==1)&&(senddata_flag==1)){
-			sprintf((char*)text,"%d\r\n",temp_val);
-			HAL_UART_Transmit_IT(&huart1, text,strlen((char*)text));
+			uart_buffer[0]=temp_val>>16;//共需要3字节传输
+			uart_buffer[1]=temp_val>>8;//共需要3字节传输
+			uart_buffer[2]=temp_val>>0;//共需要3字节传输		
+			HAL_UART_Transmit_IT(&huart1, uart_buffer,3);
 			senddata_flag=0;
 		}		
 		else if(mode_flag==0){//iic
@@ -126,7 +129,6 @@ int main(void)
 				}	   
 			}
 		} 		
-		HAL_Delay(100);
 	}
 }
 

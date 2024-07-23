@@ -9,7 +9,7 @@
 /* Private function prototypes -----------------------------------------------*/
 static void SerialInit(uint32_t baud_rate);
 static void SerialSend(uint8_t data);
-extern uint8_t ReceiveData[3];
+extern uint8_t ReceiveData;
 /* Private functions ---------------------------------------------------------*/
 /**
   * @brief  Configures the UART peripheral. 
@@ -138,7 +138,7 @@ static void SerialInit(uint32_t baud_rate)
 //  huart1.gState= HAL_UART_STATE_READY;
 //  huart1.RxState= HAL_UART_STATE_READY;
   
-	HAL_UART_Receive_IT(&huart1, ReceiveData, sizeof(ReceiveData));	
+	HAL_UART_Receive_IT(&huart1, &ReceiveData, sizeof(ReceiveData));	
 	HAL_NVIC_EnableIRQ(UART1_IRQn); // ÖÐ¶ÏÊ¹ÄÜ
 	
 }
