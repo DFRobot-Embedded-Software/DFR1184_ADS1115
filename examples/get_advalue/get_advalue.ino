@@ -1,16 +1,18 @@
 #include <DFRobot_ADS1115.h>
 
 #define I2C_COMMUNICATION  //use I2C for communication, but use the serial port for communication if the line of codes were masked
-#define UART_BAUDRATE 9600//波特率
-#define MODULE_I2C_ADDRESS 0x48//iic地址
+
+#define UART_BAUDRATE 9600
+#define MODULE_I2C_ADDRESS 0x48
+
 #ifdef  I2C_COMMUNICATION
   DFRobot_ADS1115_I2C ads1115(&Wire, MODULE_I2C_ADDRESS);
  /* ---------------------------------------------------------------------------------------------------------------------
-  *    board   |             MCU                | Leonardo/Mega2560/M0 |    UNO    | ESP8266 | ESP32 |  microbit  |   m0  |
-  *     VCC    |            3.3V/5V             |        VCC           |    VCC    |   VCC   |  VCC  |     X      |  vcc  |
-  *     GND    |              GND               |        GND           |    GND    |   GND   |  GND  |     X      |  gnd  |
-  *     RX     |              TX                |     Serial1 TX1      |     5     |   5/D6  |  D2   |     X      |  tx1  |
-  *     TX     |              RX                |     Serial1 RX1      |     4     |   4/D7  |  D3   |     X      |  rx1  |
+  *    board   |             MCU                | Leonardo/Mega2560    |    UNO    |  ESP32 |  microbit  |
+  *     VCC    |            3.3V/5V             |        VCC           |    VCC    |   VCC  |     X      |
+  *     GND    |              GND               |        GND           |    GND    |   GND  |     X      |
+  *     RX     |              TX                |     Serial1 TX1      |     5     |   D2   |     X      |
+  *     TX     |              RX                |     Serial1 RX1      |     4     |   D3   |     X      |
   * ----------------------------------------------------------------------------------------------------------------------*/
   /* Baud rate cannot be changed */
 

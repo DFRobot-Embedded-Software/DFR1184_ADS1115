@@ -28,8 +28,8 @@ public:
   bool begin(void);
 private:
   uint32_t _baud;
-  // uint8_t _rxpin;
-  // uint8_t _txpin;
+  uint8_t _rxpin;
+  uint8_t _txpin;
 public:
 #if defined(ARDUINO_AVR_UNO) || defined(ESP8266)
   DFRobot_ADS1115_UART(SoftwareSerial* sSerial, uint32_t Baud);

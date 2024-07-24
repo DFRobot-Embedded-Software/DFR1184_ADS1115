@@ -20,29 +20,31 @@
 
 
 ## 库安装
-这里提供一种使用本库的方法：<br>
-1.首先下载库文件,将其粘贴到\Arduino\libraries目录中,然后打开examples文件夹并在该文件夹中运行演示.<br>
+要使用这个库，首先将库下载到Raspberry Pi，然后打开用例文件夹。要执行一个用例demox.py，请在命令行中输入python demox.py。例如，要执行get_advalue.py，你需要输入：
 
+```
+python get_advalue.py
+```
 
 ## 方法
 
-```C++
+```python
+'''!
+  @fn begin
+  @brief 初始化通讯方式
+  @return 返回初始化状态
+'''
+  def begin(void);
 
-  /**
-   * @fn begin
-   * @brief 初始化通讯方式
-   * @return 返回初始化状态
-   */
-  uint8_t begin(void);
+'''!
+@fn get_value(uint8_t channel)
+@brief 获取电压值
+@param 选择通道1/通道2 
+@note 只能输入1或2，其他值会一直返回0
+@return 电压值
+'''
+  def get_value(uint8_t channel);
 
-  /**
-   * @fn get_value(uint8_t channel)
-   * @brief 获取电压值
-   * @param 选择通道1/通道2 
-   * @note 只能输入1或2，其他值会一直返回0
-   * @return 电压值
-   */
-  uint32_t get_value(uint8_t channel);
 ```
 ## 兼容性
 

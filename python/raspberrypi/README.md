@@ -19,29 +19,32 @@ The product is a module that integrates the ADS1115 chip. The I2C and UART commu
 
 
 ## Installation
-Here's one way to use this library:
-1. First download the library file, paste it into the \Arduino\libraries directory, then open the examples folder and run the demo inside that folder.
+To use this library, first download it to Raspberry Pi and then open the use case folder. To execute a use case demox.py, enter python demox.py in the command line. For example, to execute the control32k.py use case, you need to enter:<br>
+
+```
+python get_advalue.py
+```
+
 
 
 ## Methods
 
-```C++
+```python
+'''!
+  @fn begin
+  @brief Initializes the communication method
+  @return Ture or False
+'''
+  def begin(self)
+'''
+  @fn get_value(uint8_t channel)
+  @brief Getting voltage values
+  @param select channel 1/ channel 2
+  @note You can only enter 1 or 2, and any other values will always return 0
+  @return voltage values
+'''
+  def get_value(uint8_t channel);
 
-  /**
-   * @fn begin
-   * @brief  Initializes the communication method
-   * @return Returns the initial state
-   */
-  uint8_t begin(void);
-
-  /**
-   * @fn get_value(uint8_t channel)
-   * @brief Getting voltage values
-   * @param select channel 1/ channel 2
-   * @note You can only enter 1 or 2, and any other values will always return 0
-   * @return voltage values
-   */
-  uint32_t get_value(uint8_t channel);
 ```
 
 ## Compatibility

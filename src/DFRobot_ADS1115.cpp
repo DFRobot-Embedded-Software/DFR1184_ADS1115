@@ -14,23 +14,28 @@
 #if defined(ARDUINO_AVR_UNO) || defined(ESP8266)
 DFRobot_ADS1115_UART::DFRobot_ADS1115_UART(SoftwareSerial* sSerial, uint32_t Baud)
 {
-	
 	mySerial = sSerial;
 	_baud=Baud;
 }
 #else
 DFRobot_ADS1115_UART::DFRobot_ADS1115_UART(HardwareSerial* hSerial, uint32_t Baud, uint8_t txpin, uint8_t rxpin)
 {
-	mySerial = sSerial;
+	mySerial = hSerial;
 	_baud=Baud;
-	// _txpin = txpin;
-	// _rxpin = rxpin;
+	_txpin = txpin;
+	_rxpin = rxpin;
 }
 #endif
 
 bool DFRobot_ADS1115_UART::begin(void)
 {
-	mySerial->begin(_baud);
+#ifdef ESP32
+  mySerial->begin(_baud, SERIAL_8N1, _txpin, _rxpin);
+  // #elif defined(ARDUINO_AVR_UNO) || defined(ESP8266)
+    // nothing use software
+#else
+  mySerial->begin(_baud);  // M0 cannot create a begin in a construct
+#endif
 	return 1;
 }
 
