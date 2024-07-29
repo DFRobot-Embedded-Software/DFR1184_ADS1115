@@ -19,7 +19,6 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "cs32l010_hal.h"
-#include "cs32l010_starterkit.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */

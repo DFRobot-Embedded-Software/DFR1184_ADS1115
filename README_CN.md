@@ -58,10 +58,10 @@ Micro:bit          |      √       | nonsupport uart |             |
 RaspberryPi4       |      √       |                 |             |
 
 - Python version
-| ------- | --------- | ---------- | -------- | ------- |
-| Python  | Work Well | Work Wrong | Untested | Remarks |
-| Python2 | √         |            |          |         |
-| Python3 | √         |            |          |         |
+| ------- | :---------: | :----------: | :--------: | :-------: |
+| Python  | Work Well   | Work Wrong   | Untested   | Remarks   |
+| Python2 |     √       |              |            |           |
+| Python3 |     √       |              |            |           |
 
 ## 历史
 

@@ -36,7 +36,6 @@
 .\objects\main.o: C:\Keil_v5\ARM\Packs\Chipsea\CS32L010_DFP\1.0.4\Device\HAL_Driver\inc\cs32l010_hal_clktrim.h
 .\objects\main.o: C:\Keil_v5\ARM\Packs\Chipsea\CS32L010_DFP\1.0.4\Device\HAL_Driver\inc\cs32l010_hal_pca.h
 .\objects\main.o: C:\Keil_v5\ARM\Packs\Chipsea\CS32L010_DFP\1.0.4\Device\HAL_Driver\inc\cs32l010_hal_owire.h
-.\objects\main.o: ../Drivers/BSP/CS32L010_StarterKit/cs32l010_starterkit.h
 .\objects\main.o: ../Common/io_mapping.h
 .\objects\main.o: ../Common/log.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

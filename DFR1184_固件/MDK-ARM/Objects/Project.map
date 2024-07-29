@@ -4,37 +4,6 @@ Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
 
 Section Cross References
 
-    cs32l010_starterkit.o(i.BSP_LED_DeInit) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
-    cs32l010_starterkit.o(i.BSP_LED_DeInit) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_DeInit) for HAL_GPIO_DeInit
-    cs32l010_starterkit.o(i.BSP_LED_DeInit) refers to cs32l010_starterkit.o(.constdata) for LED_PIN
-    cs32l010_starterkit.o(i.BSP_LED_DeInit) refers to cs32l010_starterkit.o(.data) for LED_PORT
-    cs32l010_starterkit.o(i.BSP_LED_Init) refers to memseta.o(.text) for __aeabi_memclr4
-    cs32l010_starterkit.o(i.BSP_LED_Init) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_Init) for HAL_GPIO_Init
-    cs32l010_starterkit.o(i.BSP_LED_Init) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
-    cs32l010_starterkit.o(i.BSP_LED_Init) refers to cs32l010_starterkit.o(.constdata) for LED_PIN
-    cs32l010_starterkit.o(i.BSP_LED_Init) refers to cs32l010_starterkit.o(.data) for LED_PORT
-    cs32l010_starterkit.o(i.BSP_LED_Off) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
-    cs32l010_starterkit.o(i.BSP_LED_Off) refers to cs32l010_starterkit.o(.constdata) for LED_PIN
-    cs32l010_starterkit.o(i.BSP_LED_Off) refers to cs32l010_starterkit.o(.data) for LED_PORT
-    cs32l010_starterkit.o(i.BSP_LED_On) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
-    cs32l010_starterkit.o(i.BSP_LED_On) refers to cs32l010_starterkit.o(.constdata) for LED_PIN
-    cs32l010_starterkit.o(i.BSP_LED_On) refers to cs32l010_starterkit.o(.data) for LED_PORT
-    cs32l010_starterkit.o(i.BSP_LED_Toggle) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_TogglePin) for HAL_GPIO_TogglePin
-    cs32l010_starterkit.o(i.BSP_LED_Toggle) refers to cs32l010_starterkit.o(.constdata) for LED_PIN
-    cs32l010_starterkit.o(i.BSP_LED_Toggle) refers to cs32l010_starterkit.o(.data) for LED_PORT
-    cs32l010_starterkit.o(i.BSP_PB_DeInit) refers to cs32l010_hal_cortex.o(i.HAL_NVIC_DisableIRQ) for HAL_NVIC_DisableIRQ
-    cs32l010_starterkit.o(i.BSP_PB_DeInit) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_DeInit) for HAL_GPIO_DeInit
-    cs32l010_starterkit.o(i.BSP_PB_DeInit) refers to cs32l010_starterkit.o(.constdata) for BUTTON_PIN
-    cs32l010_starterkit.o(i.BSP_PB_DeInit) refers to cs32l010_starterkit.o(.data) for BUTTON_PORT
-    cs32l010_starterkit.o(i.BSP_PB_GetState) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_ReadPin) for HAL_GPIO_ReadPin
-    cs32l010_starterkit.o(i.BSP_PB_GetState) refers to cs32l010_starterkit.o(.constdata) for BUTTON_PIN
-    cs32l010_starterkit.o(i.BSP_PB_GetState) refers to cs32l010_starterkit.o(.data) for BUTTON_PORT
-    cs32l010_starterkit.o(i.BSP_PB_Init) refers to memseta.o(.text) for __aeabi_memclr4
-    cs32l010_starterkit.o(i.BSP_PB_Init) refers to cs32l010_hal_gpio.o(i.HAL_GPIO_Init) for HAL_GPIO_Init
-    cs32l010_starterkit.o(i.BSP_PB_Init) refers to cs32l010_hal_cortex.o(i.HAL_NVIC_SetPriority) for HAL_NVIC_SetPriority
-    cs32l010_starterkit.o(i.BSP_PB_Init) refers to cs32l010_hal_cortex.o(i.HAL_NVIC_EnableIRQ) for HAL_NVIC_EnableIRQ
-    cs32l010_starterkit.o(i.BSP_PB_Init) refers to cs32l010_starterkit.o(.constdata) for BUTTON_PIN
-    cs32l010_starterkit.o(i.BSP_PB_Init) refers to cs32l010_starterkit.o(.data) for BUTTON_PORT
     cs32l010_it.o(i.I2C_IRQHandler) refers to cs32l010_hal_i2c.o(i.HAL_I2C_IRQHandler) for HAL_I2C_IRQHandler
     cs32l010_it.o(i.I2C_IRQHandler) refers to dfrobot_i2c_slave.o(.bss) for i2cSlave
     cs32l010_it.o(i.SysTick_Handler) refers to cs32l010_hal.o(i.HAL_IncTick) for HAL_IncTick
@@ -864,19 +833,6 @@ Section Cross References
 
 Removing Unused input sections from the image.
 
-    Removing cs32l010_starterkit.o(.rev16_text), (4 bytes).
-    Removing cs32l010_starterkit.o(.revsh_text), (4 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_GetVersion), (8 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_LED_DeInit), (56 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_LED_Init), (120 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_LED_Off), (32 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_LED_On), (32 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_LED_Toggle), (32 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_PB_DeInit), (52 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_PB_GetState), (32 bytes).
-    Removing cs32l010_starterkit.o(i.BSP_PB_Init), (176 bytes).
-    Removing cs32l010_starterkit.o(.constdata), (5 bytes).
-    Removing cs32l010_starterkit.o(.data), (8 bytes).
     Removing cs32l010_hal_msp.o(.rev16_text), (4 bytes).
     Removing cs32l010_hal_msp.o(.revsh_text), (4 bytes).
     Removing cs32l010_it.o(.rev16_text), (4 bytes).
@@ -1376,7 +1332,7 @@ Removing Unused input sections from the image.
     Removing dfixul.o(.text), (64 bytes).
     Removing cdrcmple.o(.text), (40 bytes).
 
-511 unused section(s) (total 32702 bytes) removed from the image.
+498 unused section(s) (total 32141 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1387,36 +1343,36 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      192  startup_cs32l010.o(RESET)
-    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
@@ -1432,11 +1388,10 @@ Image Symbol Table
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixui.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
-    ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
+    ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ..\Common\log.c                          0x00000000   Number         0  log.o ABSOLUTE
     ..\Common\util.c                         0x00000000   Number         0  util.o ABSOLUTE
-    ..\Drivers\BSP\CS32L010_StarterKit\cs32l010_starterkit.c 0x00000000   Number         0  cs32l010_starterkit.o ABSOLUTE
     ..\Hardware\DFRobot_I2C_Slave.c          0x00000000   Number         0  dfrobot_i2c_slave.o ABSOLUTE
     ..\Hardware\ads1115.c                    0x00000000   Number         0  ads1115.o ABSOLUTE
     ..\User\cs32l010_hal_msp.c               0x00000000   Number         0  cs32l010_hal_msp.o ABSOLUTE
@@ -1444,7 +1399,6 @@ Image Symbol Table
     ..\User\main.c                           0x00000000   Number         0  main.o ABSOLUTE
     ..\\Common\\log.c                        0x00000000   Number         0  log.o ABSOLUTE
     ..\\Common\\util.c                       0x00000000   Number         0  util.o ABSOLUTE
-    ..\\Drivers\\BSP\\CS32L010_StarterKit\\cs32l010_starterkit.c 0x00000000   Number         0  cs32l010_starterkit.o ABSOLUTE
     ..\\Hardware\\DFRobot_I2C_Slave.c        0x00000000   Number         0  dfrobot_i2c_slave.o ABSOLUTE
     ..\\Hardware\\ads1115.c                  0x00000000   Number         0  ads1115.o ABSOLUTE
     ..\\User\\cs32l010_hal_msp.c             0x00000000   Number         0  cs32l010_hal_msp.o ABSOLUTE
@@ -1650,11 +1604,10 @@ Image Symbol Table
     i.uart_command                           0x000025b4   Section        0  main.o(i.uart_command)
     .constdata                               0x00002660   Section      256  cs32l010_hal_uart.o(.constdata)
     ParityTable256                           0x00002660   Data         256  cs32l010_hal_uart.o(.constdata)
-    .data                                    0x20000000   Section       25  main.o(.data)
-    uartTimer                                0x20000016   Data           2  main.o(.data)
-    last_mode                                0x20000018   Data           1  main.o(.data)
-    .data                                    0x20000019   Section        1  ads1115.o(.data)
-    .data                                    0x2000001a   Section        9  dfrobot_i2c_slave.o(.data)
+    .data                                    0x20000000   Section       23  main.o(.data)
+    last_mode                                0x20000016   Data           1  main.o(.data)
+    .data                                    0x20000017   Section        1  ads1115.o(.data)
+    .data                                    0x20000018   Section        9  dfrobot_i2c_slave.o(.data)
     .data                                    0x20000024   Section        9  cs32l010_hal.o(.data)
     .data                                    0x20000030   Section        4  system_cs32l010.o(.data)
     .bss                                     0x20000034   Section      648  main.o(.bss)
@@ -1875,16 +1828,16 @@ Image Symbol Table
     Addr1                                    0x20000013   Data           1  main.o(.data)
     Addr0_last                               0x20000014   Data           1  main.o(.data)
     Addr1_last                               0x20000015   Data           1  main.o(.data)
-    mode_flag                                0x20000019   Data           1  ads1115.o(.data)
-    r_address_offset                         0x2000001a   Data           1  dfrobot_i2c_slave.o(.data)
-    transmit_size                            0x2000001b   Data           1  dfrobot_i2c_slave.o(.data)
-    rx_count                                 0x2000001c   Data           1  dfrobot_i2c_slave.o(.data)
-    i2c_RX_receive_data                      0x2000001d   Data           1  dfrobot_i2c_slave.o(.data)
-    i2c_TX_Send_data                         0x2000001e   Data           1  dfrobot_i2c_slave.o(.data)
-    begin_trans                              0x2000001f   Data           1  dfrobot_i2c_slave.o(.data)
-    r_address                                0x20000020   Data           1  dfrobot_i2c_slave.o(.data)
-    regaddr_flag                             0x20000021   Data           1  dfrobot_i2c_slave.o(.data)
-    i2c_interrupt                            0x20000022   Data           1  dfrobot_i2c_slave.o(.data)
+    mode_flag                                0x20000017   Data           1  ads1115.o(.data)
+    r_address_offset                         0x20000018   Data           1  dfrobot_i2c_slave.o(.data)
+    transmit_size                            0x20000019   Data           1  dfrobot_i2c_slave.o(.data)
+    rx_count                                 0x2000001a   Data           1  dfrobot_i2c_slave.o(.data)
+    i2c_RX_receive_data                      0x2000001b   Data           1  dfrobot_i2c_slave.o(.data)
+    i2c_TX_Send_data                         0x2000001c   Data           1  dfrobot_i2c_slave.o(.data)
+    begin_trans                              0x2000001d   Data           1  dfrobot_i2c_slave.o(.data)
+    r_address                                0x2000001e   Data           1  dfrobot_i2c_slave.o(.data)
+    regaddr_flag                             0x2000001f   Data           1  dfrobot_i2c_slave.o(.data)
+    i2c_interrupt                            0x20000020   Data           1  dfrobot_i2c_slave.o(.data)
     uwTick                                   0x20000024   Data           4  cs32l010_hal.o(.data)
     uwTickPrio                               0x20000028   Data           4  cs32l010_hal.o(.data)
     uwTickFreq                               0x2000002c   Data           1  cs32l010_hal.o(.data)
@@ -1914,173 +1867,173 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO         3824    RESET               startup_cs32l010.o
-    0x000000c0   0x000000c0   0x00000000   Code   RO         3861  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x000000c0   0x000000c0   0x00000004   Code   RO         4149    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x000000c4   0x000000c4   0x00000004   Code   RO         4152    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x000000c8   0x000000c8   0x00000000   Code   RO         4154    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x000000c8   0x000000c8   0x00000000   Code   RO         4156    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x000000c8   0x000000c8   0x00000008   Code   RO         4157    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x000000d0   0x000000d0   0x00000004   Code   RO         4164    .ARM.Collect$$$$0000000E  mc_p.l(entry12b.o)
-    0x000000d4   0x000000d4   0x00000000   Code   RO         4159    .ARM.Collect$$$$0000000F  mc_p.l(entry10a.o)
-    0x000000d4   0x000000d4   0x00000000   Code   RO         4161    .ARM.Collect$$$$00000011  mc_p.l(entry11a.o)
-    0x000000d4   0x000000d4   0x00000004   Code   RO         4150    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
-    0x000000d8   0x000000d8   0x0000001c   Code   RO         3825    .text               startup_cs32l010.o
-    0x000000f4   0x000000f4   0x0000002c   Code   RO         3864    .text               mc_p.l(uidiv.o)
-    0x00000120   0x00000120   0x00000022   Code   RO         3866    .text               mc_p.l(llushr.o)
-    0x00000142   0x00000142   0x00000024   Code   RO         3868    .text               mc_p.l(memcpya.o)
-    0x00000166   0x00000166   0x00000024   Code   RO         3870    .text               mc_p.l(memseta.o)
-    0x0000018a   0x0000018a   0x0000007a   Code   RO         4135    .text               mf_p.l(fmul.o)
-    0x00000204   0x00000204   0x000000d0   Code   RO         4137    .text               mf_p.l(dmul.o)
-    0x000002d4   0x000002d4   0x000000f0   Code   RO         4139    .text               mf_p.l(ddiv.o)
-    0x000003c4   0x000003c4   0x00000028   Code   RO         4141    .text               mf_p.l(dflti.o)
-    0x000003ec   0x000003ec   0x00000028   Code   RO         4143    .text               mf_p.l(ffixui.o)
-    0x00000414   0x00000414   0x00000028   Code   RO         4145    .text               mf_p.l(cdcmple.o)
-    0x0000043c   0x0000043c   0x00000038   Code   RO         4147    .text               mf_p.l(d2f.o)
-    0x00000474   0x00000474   0x00000000   Code   RO         4168    .text               mc_p.l(iusefp.o)
-    0x00000474   0x00000474   0x00000082   Code   RO         4169    .text               mf_p.l(fepilogue.o)
-    0x000004f6   0x000004f6   0x000000be   Code   RO         4171    .text               mf_p.l(depilogue.o)
-    0x000005b4   0x000005b4   0x00000024   Code   RO         4181    .text               mc_p.l(init.o)
-    0x000005d8   0x000005d8   0x00000020   Code   RO         4183    .text               mc_p.l(llshl.o)
-    0x000005f8   0x000005f8   0x00000002   Code   RO          241    i.ADC_IRQHandler    cs32l010_it.o
-    0x000005fa   0x000005fa   0x00000002   Code   RO          242    i.AWK_IRQHandler    cs32l010_it.o
-    0x000005fc   0x000005fc   0x00000088   Code   RO          600    i.Ads1115_I2C_Init  ads1115.o
-    0x00000684   0x00000684   0x00000002   Code   RO          243    i.CLKTRIM_IRQHandler  cs32l010_it.o
-    0x00000686   0x00000686   0x00000002   Code   RO          439    i.Error_Handler     main.o
-    0x00000688   0x00000688   0x00000002   Code   RO          244    i.FLASH_IRQHandler  cs32l010_it.o
-    0x0000068a   0x0000068a   0x00000002   Code   RO          245    i.GPIOA_IRQHandler  cs32l010_it.o
-    0x0000068c   0x0000068c   0x00000002   Code   RO          246    i.GPIOB_IRQHandler  cs32l010_it.o
-    0x0000068e   0x0000068e   0x00000002   Code   RO          247    i.GPIOC_IRQHandler  cs32l010_it.o
-    0x00000690   0x00000690   0x00000002   Code   RO          248    i.GPIOD_IRQHandler  cs32l010_it.o
+    0x00000000   0x00000000   0x000000c0   Data   RO         3746    RESET               startup_cs32l010.o
+    0x000000c0   0x000000c0   0x00000000   Code   RO         3783  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x000000c0   0x000000c0   0x00000004   Code   RO         4071    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x000000c4   0x000000c4   0x00000004   Code   RO         4074    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x000000c8   0x000000c8   0x00000000   Code   RO         4076    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x000000c8   0x000000c8   0x00000000   Code   RO         4078    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x000000c8   0x000000c8   0x00000008   Code   RO         4079    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x000000d0   0x000000d0   0x00000004   Code   RO         4086    .ARM.Collect$$$$0000000E  mc_p.l(entry12b.o)
+    0x000000d4   0x000000d4   0x00000000   Code   RO         4081    .ARM.Collect$$$$0000000F  mc_p.l(entry10a.o)
+    0x000000d4   0x000000d4   0x00000000   Code   RO         4083    .ARM.Collect$$$$00000011  mc_p.l(entry11a.o)
+    0x000000d4   0x000000d4   0x00000004   Code   RO         4072    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x000000d8   0x000000d8   0x0000001c   Code   RO         3747    .text               startup_cs32l010.o
+    0x000000f4   0x000000f4   0x0000002c   Code   RO         3786    .text               mc_p.l(uidiv.o)
+    0x00000120   0x00000120   0x00000022   Code   RO         3788    .text               mc_p.l(llushr.o)
+    0x00000142   0x00000142   0x00000024   Code   RO         3790    .text               mc_p.l(memcpya.o)
+    0x00000166   0x00000166   0x00000024   Code   RO         3792    .text               mc_p.l(memseta.o)
+    0x0000018a   0x0000018a   0x0000007a   Code   RO         4057    .text               mf_p.l(fmul.o)
+    0x00000204   0x00000204   0x000000d0   Code   RO         4059    .text               mf_p.l(dmul.o)
+    0x000002d4   0x000002d4   0x000000f0   Code   RO         4061    .text               mf_p.l(ddiv.o)
+    0x000003c4   0x000003c4   0x00000028   Code   RO         4063    .text               mf_p.l(dflti.o)
+    0x000003ec   0x000003ec   0x00000028   Code   RO         4065    .text               mf_p.l(ffixui.o)
+    0x00000414   0x00000414   0x00000028   Code   RO         4067    .text               mf_p.l(cdcmple.o)
+    0x0000043c   0x0000043c   0x00000038   Code   RO         4069    .text               mf_p.l(d2f.o)
+    0x00000474   0x00000474   0x00000000   Code   RO         4090    .text               mc_p.l(iusefp.o)
+    0x00000474   0x00000474   0x00000082   Code   RO         4091    .text               mf_p.l(fepilogue.o)
+    0x000004f6   0x000004f6   0x000000be   Code   RO         4093    .text               mf_p.l(depilogue.o)
+    0x000005b4   0x000005b4   0x00000024   Code   RO         4103    .text               mc_p.l(init.o)
+    0x000005d8   0x000005d8   0x00000020   Code   RO         4105    .text               mc_p.l(llshl.o)
+    0x000005f8   0x000005f8   0x00000002   Code   RO          163    i.ADC_IRQHandler    cs32l010_it.o
+    0x000005fa   0x000005fa   0x00000002   Code   RO          164    i.AWK_IRQHandler    cs32l010_it.o
+    0x000005fc   0x000005fc   0x00000088   Code   RO          522    i.Ads1115_I2C_Init  ads1115.o
+    0x00000684   0x00000684   0x00000002   Code   RO          165    i.CLKTRIM_IRQHandler  cs32l010_it.o
+    0x00000686   0x00000686   0x00000002   Code   RO          361    i.Error_Handler     main.o
+    0x00000688   0x00000688   0x00000002   Code   RO          166    i.FLASH_IRQHandler  cs32l010_it.o
+    0x0000068a   0x0000068a   0x00000002   Code   RO          167    i.GPIOA_IRQHandler  cs32l010_it.o
+    0x0000068c   0x0000068c   0x00000002   Code   RO          168    i.GPIOB_IRQHandler  cs32l010_it.o
+    0x0000068e   0x0000068e   0x00000002   Code   RO          169    i.GPIOC_IRQHandler  cs32l010_it.o
+    0x00000690   0x00000690   0x00000002   Code   RO          170    i.GPIOD_IRQHandler  cs32l010_it.o
     0x00000692   0x00000692   0x00000002   PAD
-    0x00000694   0x00000694   0x0000002c   Code   RO          781    i.HAL_Delay         cs32l010_hal.o
-    0x000006c0   0x000006c0   0x0000027c   Code   RO         1624    i.HAL_GPIO_Init     cs32l010_hal_gpio.o
-    0x0000093c   0x0000093c   0x00000012   Code   RO         1625    i.HAL_GPIO_ReadPin  cs32l010_hal_gpio.o
-    0x0000094e   0x0000094e   0x0000000c   Code   RO         1627    i.HAL_GPIO_WritePin  cs32l010_hal_gpio.o
+    0x00000694   0x00000694   0x0000002c   Code   RO          703    i.HAL_Delay         cs32l010_hal.o
+    0x000006c0   0x000006c0   0x0000027c   Code   RO         1546    i.HAL_GPIO_Init     cs32l010_hal_gpio.o
+    0x0000093c   0x0000093c   0x00000012   Code   RO         1547    i.HAL_GPIO_ReadPin  cs32l010_hal_gpio.o
+    0x0000094e   0x0000094e   0x0000000c   Code   RO         1549    i.HAL_GPIO_WritePin  cs32l010_hal_gpio.o
     0x0000095a   0x0000095a   0x00000002   PAD
-    0x0000095c   0x0000095c   0x0000000c   Code   RO          785    i.HAL_GetTick       cs32l010_hal.o
-    0x00000968   0x00000968   0x00000020   Code   RO         1677    i.HAL_I2C_ACK_Config  cs32l010_hal_i2c.o
-    0x00000988   0x00000988   0x0000001e   Code   RO         1678    i.HAL_I2C_Check_Flag  cs32l010_hal_i2c.o
-    0x000009a6   0x000009a6   0x0000000e   Code   RO         1679    i.HAL_I2C_Clear_Interrupt_Flag  cs32l010_hal_i2c.o
-    0x000009b4   0x000009b4   0x0000003a   Code   RO         1680    i.HAL_I2C_DeInit    cs32l010_hal_i2c.o
-    0x000009ee   0x000009ee   0x0000000e   Code   RO         1681    i.HAL_I2C_Get_Interrupt_Flag  cs32l010_hal_i2c.o
-    0x000009fc   0x000009fc   0x0000001a   Code   RO         1682    i.HAL_I2C_IRQHandler  cs32l010_hal_i2c.o
-    0x00000a16   0x00000a16   0x000000f2   Code   RO         1683    i.HAL_I2C_Init      cs32l010_hal_i2c.o
-    0x00000b08   0x00000b08   0x00000002   Code   RO         1684    i.HAL_I2C_MasterCallback  cs32l010_hal_i2c.o
-    0x00000b0a   0x00000b0a   0x00000002   Code   RO         1688    i.HAL_I2C_MspDeInit  cs32l010_hal_i2c.o
-    0x00000b0c   0x00000b0c   0x00000002   Code   RO         1689    i.HAL_I2C_MspInit   cs32l010_hal_i2c.o
-    0x00000b0e   0x00000b0e   0x00000012   Code   RO         1692    i.HAL_I2C_Send_Byte  cs32l010_hal_i2c.o
-    0x00000b20   0x00000b20   0x00000184   Code   RO          735    i.HAL_I2C_SlaveCallback  dfrobot_i2c_slave.o
-    0x00000ca4   0x00000ca4   0x0000003a   Code   RO         1698    i.HAL_I2C_Wait_Flag  cs32l010_hal_i2c.o
+    0x0000095c   0x0000095c   0x0000000c   Code   RO          707    i.HAL_GetTick       cs32l010_hal.o
+    0x00000968   0x00000968   0x00000020   Code   RO         1599    i.HAL_I2C_ACK_Config  cs32l010_hal_i2c.o
+    0x00000988   0x00000988   0x0000001e   Code   RO         1600    i.HAL_I2C_Check_Flag  cs32l010_hal_i2c.o
+    0x000009a6   0x000009a6   0x0000000e   Code   RO         1601    i.HAL_I2C_Clear_Interrupt_Flag  cs32l010_hal_i2c.o
+    0x000009b4   0x000009b4   0x0000003a   Code   RO         1602    i.HAL_I2C_DeInit    cs32l010_hal_i2c.o
+    0x000009ee   0x000009ee   0x0000000e   Code   RO         1603    i.HAL_I2C_Get_Interrupt_Flag  cs32l010_hal_i2c.o
+    0x000009fc   0x000009fc   0x0000001a   Code   RO         1604    i.HAL_I2C_IRQHandler  cs32l010_hal_i2c.o
+    0x00000a16   0x00000a16   0x000000f2   Code   RO         1605    i.HAL_I2C_Init      cs32l010_hal_i2c.o
+    0x00000b08   0x00000b08   0x00000002   Code   RO         1606    i.HAL_I2C_MasterCallback  cs32l010_hal_i2c.o
+    0x00000b0a   0x00000b0a   0x00000002   Code   RO         1610    i.HAL_I2C_MspDeInit  cs32l010_hal_i2c.o
+    0x00000b0c   0x00000b0c   0x00000002   Code   RO         1611    i.HAL_I2C_MspInit   cs32l010_hal_i2c.o
+    0x00000b0e   0x00000b0e   0x00000012   Code   RO         1614    i.HAL_I2C_Send_Byte  cs32l010_hal_i2c.o
+    0x00000b20   0x00000b20   0x00000184   Code   RO          657    i.HAL_I2C_SlaveCallback  dfrobot_i2c_slave.o
+    0x00000ca4   0x00000ca4   0x0000003a   Code   RO         1620    i.HAL_I2C_Wait_Flag  cs32l010_hal_i2c.o
     0x00000cde   0x00000cde   0x00000002   PAD
-    0x00000ce0   0x00000ce0   0x00000018   Code   RO          789    i.HAL_IncTick       cs32l010_hal.o
-    0x00000cf8   0x00000cf8   0x00000010   Code   RO          790    i.HAL_Init          cs32l010_hal.o
-    0x00000d08   0x00000d08   0x00000054   Code   RO          791    i.HAL_InitTick      cs32l010_hal.o
-    0x00000d5c   0x00000d5c   0x00000002   Code   RO          192    i.HAL_MspInit       cs32l010_hal_msp.o
+    0x00000ce0   0x00000ce0   0x00000018   Code   RO          711    i.HAL_IncTick       cs32l010_hal.o
+    0x00000cf8   0x00000cf8   0x00000010   Code   RO          712    i.HAL_Init          cs32l010_hal.o
+    0x00000d08   0x00000d08   0x00000054   Code   RO          713    i.HAL_InitTick      cs32l010_hal.o
+    0x00000d5c   0x00000d5c   0x00000002   Code   RO            3    i.HAL_MspInit       cs32l010_hal_msp.o
     0x00000d5e   0x00000d5e   0x00000002   PAD
-    0x00000d60   0x00000d60   0x00000018   Code   RO         1381    i.HAL_NVIC_DisableIRQ  cs32l010_hal_cortex.o
-    0x00000d78   0x00000d78   0x00000018   Code   RO         1382    i.HAL_NVIC_EnableIRQ  cs32l010_hal_cortex.o
-    0x00000d90   0x00000d90   0x00000010   Code   RO         1386    i.HAL_NVIC_SetPriority  cs32l010_hal_cortex.o
-    0x00000da0   0x00000da0   0x000001d8   Code   RO         2631    i.HAL_RCC_ClockConfig  cs32l010_hal_rcc.o
-    0x00000f78   0x00000f78   0x0000000c   Code   RO         2634    i.HAL_RCC_GetHCLKFreq  cs32l010_hal_rcc.o
-    0x00000f84   0x00000f84   0x00000028   Code   RO         2636    i.HAL_RCC_GetPCLKFreq  cs32l010_hal_rcc.o
-    0x00000fac   0x00000fac   0x000000b4   Code   RO         2637    i.HAL_RCC_GetSysClockFreq  cs32l010_hal_rcc.o
-    0x00001060   0x00001060   0x00000470   Code   RO         2639    i.HAL_RCC_OscConfig  cs32l010_hal_rcc.o
-    0x000014d0   0x000014d0   0x00000038   Code   RO         1390    i.HAL_SYSTICK_Config  cs32l010_hal_cortex.o
-    0x00001508   0x00001508   0x00000002   Code   RO         3550    i.HAL_UART_ErrorCallback  cs32l010_hal_uart.o
-    0x0000150a   0x0000150a   0x000000a0   Code   RO         3553    i.HAL_UART_IRQHandler  cs32l010_hal_uart.o
-    0x000015aa   0x000015aa   0x0000003e   Code   RO         3554    i.HAL_UART_Init     cs32l010_hal_uart.o
-    0x000015e8   0x000015e8   0x00000002   Code   RO         3556    i.HAL_UART_MspInit  cs32l010_hal_uart.o
-    0x000015ea   0x000015ea   0x0000005c   Code   RO         3558    i.HAL_UART_Receive_IT  cs32l010_hal_uart.o
+    0x00000d60   0x00000d60   0x00000018   Code   RO         1303    i.HAL_NVIC_DisableIRQ  cs32l010_hal_cortex.o
+    0x00000d78   0x00000d78   0x00000018   Code   RO         1304    i.HAL_NVIC_EnableIRQ  cs32l010_hal_cortex.o
+    0x00000d90   0x00000d90   0x00000010   Code   RO         1308    i.HAL_NVIC_SetPriority  cs32l010_hal_cortex.o
+    0x00000da0   0x00000da0   0x000001d8   Code   RO         2553    i.HAL_RCC_ClockConfig  cs32l010_hal_rcc.o
+    0x00000f78   0x00000f78   0x0000000c   Code   RO         2556    i.HAL_RCC_GetHCLKFreq  cs32l010_hal_rcc.o
+    0x00000f84   0x00000f84   0x00000028   Code   RO         2558    i.HAL_RCC_GetPCLKFreq  cs32l010_hal_rcc.o
+    0x00000fac   0x00000fac   0x000000b4   Code   RO         2559    i.HAL_RCC_GetSysClockFreq  cs32l010_hal_rcc.o
+    0x00001060   0x00001060   0x00000470   Code   RO         2561    i.HAL_RCC_OscConfig  cs32l010_hal_rcc.o
+    0x000014d0   0x000014d0   0x00000038   Code   RO         1312    i.HAL_SYSTICK_Config  cs32l010_hal_cortex.o
+    0x00001508   0x00001508   0x00000002   Code   RO         3472    i.HAL_UART_ErrorCallback  cs32l010_hal_uart.o
+    0x0000150a   0x0000150a   0x000000a0   Code   RO         3475    i.HAL_UART_IRQHandler  cs32l010_hal_uart.o
+    0x000015aa   0x000015aa   0x0000003e   Code   RO         3476    i.HAL_UART_Init     cs32l010_hal_uart.o
+    0x000015e8   0x000015e8   0x00000002   Code   RO         3478    i.HAL_UART_MspInit  cs32l010_hal_uart.o
+    0x000015ea   0x000015ea   0x0000005c   Code   RO         3480    i.HAL_UART_Receive_IT  cs32l010_hal_uart.o
     0x00001646   0x00001646   0x00000002   PAD
-    0x00001648   0x00001648   0x00000060   Code   RO          440    i.HAL_UART_RxCpltCallback  main.o
-    0x000016a8   0x000016a8   0x000000c8   Code   RO         3561    i.HAL_UART_Transmit_IT  cs32l010_hal_uart.o
-    0x00001770   0x00001770   0x00000002   Code   RO         3562    i.HAL_UART_TxCpltCallback  cs32l010_hal_uart.o
-    0x00001772   0x00001772   0x00000004   Code   RO          249    i.HardFault_Handler  cs32l010_it.o
+    0x00001648   0x00001648   0x00000060   Code   RO          362    i.HAL_UART_RxCpltCallback  main.o
+    0x000016a8   0x000016a8   0x000000c8   Code   RO         3483    i.HAL_UART_Transmit_IT  cs32l010_hal_uart.o
+    0x00001770   0x00001770   0x00000002   Code   RO         3484    i.HAL_UART_TxCpltCallback  cs32l010_hal_uart.o
+    0x00001772   0x00001772   0x00000004   Code   RO          171    i.HardFault_Handler  cs32l010_it.o
     0x00001776   0x00001776   0x00000002   PAD
-    0x00001778   0x00001778   0x00000010   Code   RO          250    i.I2C_IRQHandler    cs32l010_it.o
-    0x00001788   0x00001788   0x00000010   Code   RO          601    i.IIC_Delay         ads1115.o
-    0x00001798   0x00001798   0x0000005c   Code   RO          603    i.IIC_Write         ads1115.o
-    0x000017f4   0x000017f4   0x00000002   Code   RO          251    i.IWDG_IRQHandler   cs32l010_it.o
-    0x000017f6   0x000017f6   0x00000002   Code   RO          252    i.LPTIM_IRQHandler  cs32l010_it.o
-    0x000017f8   0x000017f8   0x00000002   Code   RO          253    i.LPUART_IRQHandler  cs32l010_it.o
-    0x000017fa   0x000017fa   0x00000002   Code   RO          254    i.LVD_IRQHandler    cs32l010_it.o
-    0x000017fc   0x000017fc   0x0000000c   Code   RO          497    i.LogInit           log.o
-    0x00001808   0x00001808   0x00000002   Code   RO          255    i.NMI_Handler       cs32l010_it.o
+    0x00001778   0x00001778   0x00000010   Code   RO          172    i.I2C_IRQHandler    cs32l010_it.o
+    0x00001788   0x00001788   0x00000010   Code   RO          523    i.IIC_Delay         ads1115.o
+    0x00001798   0x00001798   0x0000005c   Code   RO          525    i.IIC_Write         ads1115.o
+    0x000017f4   0x000017f4   0x00000002   Code   RO          173    i.IWDG_IRQHandler   cs32l010_it.o
+    0x000017f6   0x000017f6   0x00000002   Code   RO          174    i.LPTIM_IRQHandler  cs32l010_it.o
+    0x000017f8   0x000017f8   0x00000002   Code   RO          175    i.LPUART_IRQHandler  cs32l010_it.o
+    0x000017fa   0x000017fa   0x00000002   Code   RO          176    i.LVD_IRQHandler    cs32l010_it.o
+    0x000017fc   0x000017fc   0x0000000c   Code   RO          419    i.LogInit           log.o
+    0x00001808   0x00001808   0x00000002   Code   RO          177    i.NMI_Handler       cs32l010_it.o
     0x0000180a   0x0000180a   0x00000002   PAD
-    0x0000180c   0x0000180c   0x00000078   Code   RO         1392    i.NVIC_SetPriority  cs32l010_hal_cortex.o
-    0x00001884   0x00001884   0x00000002   Code   RO          256    i.OWIRE_IRQHandler  cs32l010_it.o
-    0x00001886   0x00001886   0x00000002   Code   RO          257    i.PCA_IRQHandler    cs32l010_it.o
-    0x00001888   0x00001888   0x00000002   Code   RO          258    i.PendSV_Handler    cs32l010_it.o
+    0x0000180c   0x0000180c   0x00000078   Code   RO         1314    i.NVIC_SetPriority  cs32l010_hal_cortex.o
+    0x00001884   0x00001884   0x00000002   Code   RO          178    i.OWIRE_IRQHandler  cs32l010_it.o
+    0x00001886   0x00001886   0x00000002   Code   RO          179    i.PCA_IRQHandler    cs32l010_it.o
+    0x00001888   0x00001888   0x00000002   Code   RO          180    i.PendSV_Handler    cs32l010_it.o
     0x0000188a   0x0000188a   0x00000002   PAD
-    0x0000188c   0x0000188c   0x0000002c   Code   RO         2640    i.RCC_Delay         cs32l010_hal_rcc.o
-    0x000018b8   0x000018b8   0x00000002   Code   RO          259    i.RTC_IRQHandler    cs32l010_it.o
-    0x000018ba   0x000018ba   0x00000002   Code   RO          260    i.SPI_IRQHandler    cs32l010_it.o
-    0x000018bc   0x000018bc   0x00000002   Code   RO          261    i.SVC_Handler       cs32l010_it.o
+    0x0000188c   0x0000188c   0x0000002c   Code   RO         2562    i.RCC_Delay         cs32l010_hal_rcc.o
+    0x000018b8   0x000018b8   0x00000002   Code   RO          181    i.RTC_IRQHandler    cs32l010_it.o
+    0x000018ba   0x000018ba   0x00000002   Code   RO          182    i.SPI_IRQHandler    cs32l010_it.o
+    0x000018bc   0x000018bc   0x00000002   Code   RO          183    i.SVC_Handler       cs32l010_it.o
     0x000018be   0x000018be   0x00000002   PAD
-    0x000018c0   0x000018c0   0x000000c4   Code   RO          499    i.SerialInit        log.o
-    0x00001984   0x00001984   0x00000040   Code   RO          604    i.Soft_IIC_ACK      ads1115.o
-    0x000019c4   0x000019c4   0x0000002c   Code   RO          606    i.Soft_IIC_Input    ads1115.o
-    0x000019f0   0x000019f0   0x00000040   Code   RO          607    i.Soft_IIC_NACK     ads1115.o
-    0x00001a30   0x00001a30   0x0000002c   Code   RO          608    i.Soft_IIC_Output   ads1115.o
-    0x00001a5c   0x00001a5c   0x00000064   Code   RO          609    i.Soft_IIC_Recv_Byte  ads1115.o
-    0x00001ac0   0x00001ac0   0x0000004c   Code   RO          610    i.Soft_IIC_Start    ads1115.o
-    0x00001b0c   0x00001b0c   0x00000040   Code   RO          611    i.Soft_IIC_Stop     ads1115.o
-    0x00001b4c   0x00001b4c   0x00000050   Code   RO          612    i.Soft_IIC_Wait_ACK  ads1115.o
-    0x00001b9c   0x00001b9c   0x00000028   Code   RO          613    i.Soft_IIC_Write_Byte  ads1115.o
-    0x00001bc4   0x00001bc4   0x0000003c   Code   RO          614    i.Soft_IIC_Write_High  ads1115.o
-    0x00001c00   0x00001c00   0x0000003c   Code   RO          615    i.Soft_IIC_Write_Low  ads1115.o
-    0x00001c3c   0x00001c3c   0x00000008   Code   RO          262    i.SysTick_Handler   cs32l010_it.o
-    0x00001c44   0x00001c44   0x00000054   Code   RO          441    i.SystemClock_Config  main.o
-    0x00001c98   0x00001c98   0x00000040   Code   RO         3832    i.SystemInit        system_cs32l010.o
-    0x00001cd8   0x00001cd8   0x00000002   Code   RO          263    i.TIM10_IRQHandler  cs32l010_it.o
-    0x00001cda   0x00001cda   0x00000002   Code   RO          264    i.TIM11_IRQHandler  cs32l010_it.o
-    0x00001cdc   0x00001cdc   0x00000002   Code   RO          265    i.TIM1_IRQHandler   cs32l010_it.o
-    0x00001cde   0x00001cde   0x00000002   Code   RO          266    i.TIM2_IRQHandler   cs32l010_it.o
-    0x00001ce0   0x00001ce0   0x00000002   Code   RO          267    i.UART0_IRQHandler  cs32l010_it.o
+    0x000018c0   0x000018c0   0x000000c4   Code   RO          421    i.SerialInit        log.o
+    0x00001984   0x00001984   0x00000040   Code   RO          526    i.Soft_IIC_ACK      ads1115.o
+    0x000019c4   0x000019c4   0x0000002c   Code   RO          528    i.Soft_IIC_Input    ads1115.o
+    0x000019f0   0x000019f0   0x00000040   Code   RO          529    i.Soft_IIC_NACK     ads1115.o
+    0x00001a30   0x00001a30   0x0000002c   Code   RO          530    i.Soft_IIC_Output   ads1115.o
+    0x00001a5c   0x00001a5c   0x00000064   Code   RO          531    i.Soft_IIC_Recv_Byte  ads1115.o
+    0x00001ac0   0x00001ac0   0x0000004c   Code   RO          532    i.Soft_IIC_Start    ads1115.o
+    0x00001b0c   0x00001b0c   0x00000040   Code   RO          533    i.Soft_IIC_Stop     ads1115.o
+    0x00001b4c   0x00001b4c   0x00000050   Code   RO          534    i.Soft_IIC_Wait_ACK  ads1115.o
+    0x00001b9c   0x00001b9c   0x00000028   Code   RO          535    i.Soft_IIC_Write_Byte  ads1115.o
+    0x00001bc4   0x00001bc4   0x0000003c   Code   RO          536    i.Soft_IIC_Write_High  ads1115.o
+    0x00001c00   0x00001c00   0x0000003c   Code   RO          537    i.Soft_IIC_Write_Low  ads1115.o
+    0x00001c3c   0x00001c3c   0x00000008   Code   RO          184    i.SysTick_Handler   cs32l010_it.o
+    0x00001c44   0x00001c44   0x00000054   Code   RO          363    i.SystemClock_Config  main.o
+    0x00001c98   0x00001c98   0x00000040   Code   RO         3754    i.SystemInit        system_cs32l010.o
+    0x00001cd8   0x00001cd8   0x00000002   Code   RO          185    i.TIM10_IRQHandler  cs32l010_it.o
+    0x00001cda   0x00001cda   0x00000002   Code   RO          186    i.TIM11_IRQHandler  cs32l010_it.o
+    0x00001cdc   0x00001cdc   0x00000002   Code   RO          187    i.TIM1_IRQHandler   cs32l010_it.o
+    0x00001cde   0x00001cde   0x00000002   Code   RO          188    i.TIM2_IRQHandler   cs32l010_it.o
+    0x00001ce0   0x00001ce0   0x00000002   Code   RO          189    i.UART0_IRQHandler  cs32l010_it.o
     0x00001ce2   0x00001ce2   0x00000002   PAD
-    0x00001ce4   0x00001ce4   0x00000010   Code   RO          268    i.UART1_IRQHandler  cs32l010_it.o
-    0x00001cf4   0x00001cf4   0x000000fc   Code   RO         3563    i.UART_Receive_IT   cs32l010_hal_uart.o
-    0x00001df0   0x00001df0   0x00000046   Code   RO         3564    i.UART_SetConfig    cs32l010_hal_uart.o
+    0x00001ce4   0x00001ce4   0x00000010   Code   RO          190    i.UART1_IRQHandler  cs32l010_it.o
+    0x00001cf4   0x00001cf4   0x000000fc   Code   RO         3485    i.UART_Receive_IT   cs32l010_hal_uart.o
+    0x00001df0   0x00001df0   0x00000046   Code   RO         3486    i.UART_SetConfig    cs32l010_hal_uart.o
     0x00001e36   0x00001e36   0x00000002   PAD
-    0x00001e38   0x00001e38   0x000000b0   Code   RO         3566    i.UART_Transmit_IT  cs32l010_hal_uart.o
-    0x00001ee8   0x00001ee8   0x00000002   Code   RO          269    i.VC_IRQHandler     cs32l010_it.o
-    0x00001eea   0x00001eea   0x00000002   Code   RO          270    i.WWDG_IRQHandler   cs32l010_it.o
-    0x00001eec   0x00001eec   0x0000002e   Code   RO         4173    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x00001f1a   0x00001f1a   0x0000001c   Code   RO          725    i.__ARM_common_switch8  ads1115.o
-    0x00001f36   0x00001f36   0x0000000e   Code   RO         4189    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x00001f44   0x00001f44   0x00000002   Code   RO         4190    i.__scatterload_null  mc_p.l(handlers.o)
-    0x00001f46   0x00001f46   0x0000000e   Code   RO         4191    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x00001f54   0x00001f54   0x0000001a   Code   RO          616    i.ads1115_config_register  ads1115.o
+    0x00001e38   0x00001e38   0x000000b0   Code   RO         3488    i.UART_Transmit_IT  cs32l010_hal_uart.o
+    0x00001ee8   0x00001ee8   0x00000002   Code   RO          191    i.VC_IRQHandler     cs32l010_it.o
+    0x00001eea   0x00001eea   0x00000002   Code   RO          192    i.WWDG_IRQHandler   cs32l010_it.o
+    0x00001eec   0x00001eec   0x0000002e   Code   RO         4095    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x00001f1a   0x00001f1a   0x0000001c   Code   RO          647    i.__ARM_common_switch8  ads1115.o
+    0x00001f36   0x00001f36   0x0000000e   Code   RO         4111    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x00001f44   0x00001f44   0x00000002   Code   RO         4112    i.__scatterload_null  mc_p.l(handlers.o)
+    0x00001f46   0x00001f46   0x0000000e   Code   RO         4113    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x00001f54   0x00001f54   0x0000001a   Code   RO          538    i.ads1115_config_register  ads1115.o
     0x00001f6e   0x00001f6e   0x00000002   PAD
-    0x00001f70   0x00001f70   0x000001f8   Code   RO          617    i.ads1115_get_voltage_val  ads1115.o
-    0x00002168   0x00002168   0x0000006e   Code   RO          618    i.ads1115_read_data  ads1115.o
-    0x000021d6   0x000021d6   0x00000012   Code   RO          736    i.i2cIRQConfig      dfrobot_i2c_slave.o
-    0x000021e8   0x000021e8   0x000000ac   Code   RO          737    i.i2cInitSlave      dfrobot_i2c_slave.o
-    0x00002294   0x00002294   0x00000070   Code   RO          442    i.key_init          main.o
-    0x00002304   0x00002304   0x000002b0   Code   RO          443    i.main              main.o
-    0x000025b4   0x000025b4   0x000000ac   Code   RO          444    i.uart_command      main.o
-    0x00002660   0x00002660   0x00000100   Data   RO         3568    .constdata          cs32l010_hal_uart.o
-    0x00002760   0x00002760   0x00000020   Data   RO         4187    Region$$Table       anon$$obj.o
+    0x00001f70   0x00001f70   0x000001f8   Code   RO          539    i.ads1115_get_voltage_val  ads1115.o
+    0x00002168   0x00002168   0x0000006e   Code   RO          540    i.ads1115_read_data  ads1115.o
+    0x000021d6   0x000021d6   0x00000012   Code   RO          658    i.i2cIRQConfig      dfrobot_i2c_slave.o
+    0x000021e8   0x000021e8   0x000000ac   Code   RO          659    i.i2cInitSlave      dfrobot_i2c_slave.o
+    0x00002294   0x00002294   0x00000070   Code   RO          364    i.key_init          main.o
+    0x00002304   0x00002304   0x000002b0   Code   RO          365    i.main              main.o
+    0x000025b4   0x000025b4   0x000000ac   Code   RO          366    i.uart_command      main.o
+    0x00002660   0x00002660   0x00000100   Data   RO         3490    .constdata          cs32l010_hal_uart.o
+    0x00002760   0x00002760   0x00000020   Data   RO         4109    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00002780, Size: 0x00000738, Max: 0x00001000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00002780   0x00000019   Data   RW          446    .data               main.o
-    0x20000019   0x00002799   0x00000001   Data   RW          620    .data               ads1115.o
-    0x2000001a   0x0000279a   0x00000009   Data   RW          739    .data               dfrobot_i2c_slave.o
-    0x20000023   0x000027a3   0x00000001   PAD
-    0x20000024   0x000027a4   0x00000009   Data   RW          797    .data               cs32l010_hal.o
+    0x20000000   0x00002780   0x00000017   Data   RW          368    .data               main.o
+    0x20000017   0x00002797   0x00000001   Data   RW          542    .data               ads1115.o
+    0x20000018   0x00002798   0x00000009   Data   RW          661    .data               dfrobot_i2c_slave.o
+    0x20000021   0x000027a1   0x00000003   PAD
+    0x20000024   0x000027a4   0x00000009   Data   RW          719    .data               cs32l010_hal.o
     0x2000002d   0x000027ad   0x00000003   PAD
-    0x20000030   0x000027b0   0x00000004   Data   RW         3833    .data               system_cs32l010.o
-    0x20000034        -       0x00000288   Zero   RW          445    .bss                main.o
-    0x200002bc        -       0x00000034   Zero   RW          504    .bss                log.o
-    0x200002f0        -       0x00000024   Zero   RW          619    .bss                ads1115.o
-    0x20000314        -       0x00000222   Zero   RW          738    .bss                dfrobot_i2c_slave.o
+    0x20000030   0x000027b0   0x00000004   Data   RW         3755    .data               system_cs32l010.o
+    0x20000034        -       0x00000288   Zero   RW          367    .bss                main.o
+    0x200002bc        -       0x00000034   Zero   RW          426    .bss                log.o
+    0x200002f0        -       0x00000024   Zero   RW          541    .bss                ads1115.o
+    0x20000314        -       0x00000222   Zero   RW          660    .bss                dfrobot_i2c_slave.o
     0x20000536   0x000027b4   0x00000002   PAD
-    0x20000538        -       0x00000200   Zero   RW         3822    STACK               startup_cs32l010.o
+    0x20000538        -       0x00000200   Zero   RW         3744    STACK               startup_cs32l010.o
 
 
 ==============================================================================
@@ -2090,26 +2043,25 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1608        106          0          1         36      13005   ads1115.o
+      1608        106          0          1         36      12941   ads1115.o
        180         34          0          9          0       6821   cs32l010_hal.o
        240         32          0          0          0       9695   cs32l010_hal_cortex.o
        666          0          0          0          0       2739   cs32l010_hal_gpio.o
        498          0          0          0          0       7966   cs32l010_hal_i2c.o
-         2          0          0          0          0        402   cs32l010_hal_msp.o
+         2          0          0          0          0     137634   cs32l010_hal_msp.o
       1884        108          0          0          0       5180   cs32l010_hal_rcc.o
       1018         16        256          0          0       7378   cs32l010_hal_uart.o
         96         12          0          0          0      12184   cs32l010_it.o
-         0          0          0          0          0     137232   cs32l010_starterkit.o
        578         66          0          9        546       9593   dfrobot_i2c_slave.o
        208         20          0          0         52       1709   log.o
-      1154        128          0         25        648       4882   main.o
+      1154        128          0         23        648       4854   main.o
         28          8        192          0        512        620   startup_cs32l010.o
         64         16          0          4          0        699   system_cs32l010.o
 
     ----------------------------------------------------------------------
-      8248        546        480         52       1796     220105   Object Totals
+      8248        546        480         52       1796     220013   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        24          0          0          4          2          0   (incl. Padding)
+        24          0          0          6          2          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2163,8 +2115,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      9632        582        480         52       1796     216669   Grand Totals
-      9632        582        480         52       1796     216669   ELF Image Totals
+      9632        582        480         52       1796     216577   Grand Totals
+      9632        582        480         52       1796     216577   ELF Image Totals
       9632        582        480         52          0          0   ROM Totals
 
 ==============================================================================

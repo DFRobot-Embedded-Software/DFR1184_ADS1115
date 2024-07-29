@@ -31,6 +31,7 @@ Here's one way to use this library:
    * @fn begin
    * @brief  Initializes the communication method
    * @return Returns the initial state
+   * @retval Ture no Eerro
    */
   uint8_t begin(void);
 
@@ -68,4 +69,4 @@ RaspberryPi4       |      √       |                 |             |
 
 ## Credits
 
-Written by lr(), 2024. (Welcome to our website)
+Written by lr(), 2024. (Welcome to our [website](https://www.dfrobot.com/))

@@ -6,7 +6,7 @@
  * @copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license  The MIT License (MIT)
  * @author  [lr]
- * @version  V1.0
+ * @version  V0.1
  * @date  2024-07-19
  */
  /* Includes ------------------------------------------------------------------*/
@@ -22,7 +22,7 @@ uint8_t ReceiveBuffer[UART_MAX_LEN]= { 0 };
 uint8_t regBuf[DATA_LEN_MAX] = { 0 };
 uint8_t text[10];
 uint8_t uart_buffer[5];
-volatile uint8_t select_pin=0;//bug初始化为0不工作？
+volatile uint8_t select_pin=0;
 uint8_t ReceiveCount=0;
 uint8_t ReceiveHandleCount=0;
 uint8_t SendBuffer[DATA_LEN_MAX]={0};
@@ -72,10 +72,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
  * @brief 串口数据解析
  * @details 串口数据分为如下读写两类:
  * @n 写操作 :
- * @n 发送 : UART0_WRITE_REGBUF + 寄存器地址 + 写入数据长度 + 对应长度的数据字节
- * @n 读操作 :
- * @n 如果是读取RTC模块的数据，需要先将(寄存器地址 + 读取数据长度) 写入(通过写操作) (REG_RTC_READ_REG + REG_RTC_READ_LEN)，以更新对应寄存器数据
- * @n 发送 : UART0_READ_REGBUF + 寄存器地址 + 读取数据长度 ; 接收 : 读取长度的字节
+ * @n 发送 : UART_WRITE_REGBUF + 寄存器地址 + 写入数据长度 + 对应长度的数据字节
+ * @n 读操作 :UART_READ_REGBUF + 寄存器地址+读取数据长度
  */
 void uart_command(void)
 {
@@ -85,7 +83,6 @@ void uart_command(void)
 		uint8_t reg = data[1];
 		uint8_t len = data[2];
 		ReceiveHandleCount+=3;	
-//		HAL_UART_Transmit_IT(&huart1, &ReceiveBuffer[ReceiveHandleCount-3],4);
 		switch (type)
 		{
 			case UART_WRITE_REGBUF:
@@ -93,7 +90,6 @@ void uart_command(void)
 					memcpy(&regBuf[reg], &data[3], len);
 					if(reg==CHANNEL_SELECT_ADDRESS)
 						select_pin=regBuf[reg];
-//					HAL_UART_Transmit_IT(&huart1, &select_pin,1);
 					ReceiveHandleCount += len;
 				}
 				break;
@@ -112,7 +108,6 @@ void uart_command(void)
 			ReceiveCount = 0;
 			ReceiveHandleCount = 0;
 	  }		
-//		HAL_UART_Transmit_IT(&huart1, &ReceiveHandleCount,1);
 	}
 }
 
@@ -120,7 +115,6 @@ void uart_command(void)
 
 int main(void)
 {
-	static uint16_t uartTimer=0;
 	static uint8_t last_mode=0;
     /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
     HAL_Init();		
@@ -132,9 +126,8 @@ int main(void)
 	key_init();	//按键初始化
 	Ads1115_I2C_Init();//读ads1115的软件IIC引脚初始化
 	
-  while (1)
-	{	
-		//改变地址后必须重新上电 	才能正常使用iic
+	while (1){	
+		//改变地址后必须重新上电 才能改变地址
 		Addr1_last=Addr1;
 		Addr0_last=Addr0;
 		last_mode=mode_flag;
@@ -147,7 +140,8 @@ int main(void)
 		if((Addr0_last!=Addr0)||(Addr1_last!=Addr1)){
 			HAL_I2C_DeInit (&i2cSlave);
 			__HAL_RCC_I2C_CLK_ENABLE();
-			i2cInitSlave();i2cIRQConfig();
+			i2cInitSlave();
+			i2cIRQConfig();
 			HAL_Delay(10);
 			mode_flag=0;
 		}
@@ -159,9 +153,12 @@ int main(void)
 		//模式状态改变 重新初始化iic或者uart
 		if(last_mode!=mode_flag){
 			if(mode_flag==1)LogInit();
-			else if(mode_flag==0){i2cInitSlave();i2cIRQConfig();}
+			else if(mode_flag==0){
+				i2cInitSlave();
+				i2cIRQConfig();
+			}
 		}
-		//根据收到的命令决定是采集A1 还是A2通道的数据 函数内部在发送修改指令后10ms后才读数据
+		//根据收到的命令决定是采集A1 还是A2通道的数据 函数内部在发送修改指令后10ms后才能读数据
 		if(select_pin==2)//2 A2  1 A1
 			val=ads1115_get_voltage_val(i2c_ads1115,0x01,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_2,CONFIG_REG_L);
 		else if(select_pin==1)

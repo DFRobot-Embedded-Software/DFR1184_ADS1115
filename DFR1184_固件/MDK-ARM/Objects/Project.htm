@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Jul 26 17:47:16 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Jul 29 09:53:49 2024
 <BR><P>
 <H3>Maximum Stack Usage =        336 bytes + Unknown(Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -86,10 +86,10 @@ Global Symbols
 <P><STRONG><a name="[43]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = __aeabi_uidivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLKFreq
+<BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Init
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLKFreq
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Init
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_Delay
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
@@ -305,10 +305,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[38]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, cs32l010_hal.o(i.HAL_GetTick))
-<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
+<BR><BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Wait_Flag
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Wait_Flag
 </UL>
 
 <P><STRONG><a name="[48]"></a>HAL_I2C_ACK_Config</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, cs32l010_hal_i2c.o(i.HAL_I2C_ACK_Config))
@@ -353,8 +353,8 @@ Global Symbols
 <P><STRONG><a name="[40]"></a>HAL_I2C_Init</STRONG> (Thumb, 242 bytes, Stack size 16 bytes, cs32l010_hal_i2c.o(i.HAL_I2C_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = HAL_I2C_Init &rArr; HAL_RCC_GetPCLKFreq &rArr; __aeabi_uidivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLKFreq
-<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Clear_Interrupt_Flag
+<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Clear_Interrupt_Flag
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLKFreq
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_MspInit
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
@@ -384,12 +384,12 @@ Global Symbols
 <P><STRONG><a name="[3f]"></a>HAL_I2C_SlaveCallback</STRONG> (Thumb, 346 bytes, Stack size 16 bytes, dfrobot_i2c_slave.o(i.HAL_I2C_SlaveCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = HAL_I2C_SlaveCallback &rArr; HAL_I2C_Wait_Flag &rArr; HAL_I2C_Check_Flag
 </UL>
-<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_DisableIRQ
+<BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_DisableIRQ
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Wait_Flag
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Send_Byte
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Clear_Interrupt_Flag
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_ACK_Config
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_IRQHandler
 </UL>
@@ -436,9 +436,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[49]"></a>HAL_NVIC_EnableIRQ</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, cs32l010_hal_cortex.o(i.HAL_NVIC_EnableIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialInit
+<BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_SlaveCallback
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialInit
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2cIRQConfig
-<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_SlaveCallback
 </UL>
 
 <P><STRONG><a name="[4e]"></a>HAL_NVIC_SetPriority</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, cs32l010_hal_cortex.o(i.HAL_NVIC_SetPriority))
@@ -626,9 +626,9 @@ Global Symbols
 <P><STRONG><a name="[66]"></a>Soft_IIC_ACK</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ads1115.o(i.Soft_IIC_ACK))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Soft_IIC_ACK &rArr; Soft_IIC_Output &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Output
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Recv_Byte
 </UL>
@@ -636,9 +636,9 @@ Global Symbols
 <P><STRONG><a name="[6a]"></a>Soft_IIC_NACK</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ads1115.o(i.Soft_IIC_NACK))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Soft_IIC_NACK &rArr; Soft_IIC_Output &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Output
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Recv_Byte
 </UL>
@@ -646,11 +646,11 @@ Global Symbols
 <P><STRONG><a name="[6b]"></a>Soft_IIC_Recv_Byte</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, ads1115.o(i.Soft_IIC_Recv_Byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Soft_IIC_Recv_Byte &rArr; Soft_IIC_NACK &rArr; Soft_IIC_Output &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_NACK
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_NACK
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_ACK
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Input
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ads1115_read_data
@@ -659,9 +659,9 @@ Global Symbols
 <P><STRONG><a name="[5f]"></a>Soft_IIC_Start</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, ads1115.o(i.Soft_IIC_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Soft_IIC_Start &rArr; Soft_IIC_Output &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Output
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ads1115_read_data
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Write
@@ -670,9 +670,9 @@ Global Symbols
 <P><STRONG><a name="[62]"></a>Soft_IIC_Stop</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ads1115.o(i.Soft_IIC_Stop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Soft_IIC_Stop &rArr; Soft_IIC_Output &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Output
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ads1115_read_data
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Write
@@ -681,10 +681,10 @@ Global Symbols
 <P><STRONG><a name="[61]"></a>Soft_IIC_Wait_ACK</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, ads1115.o(i.Soft_IIC_Wait_ACK))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Soft_IIC_Wait_ACK &rArr; Soft_IIC_Output &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Output
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Input
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ads1115_read_data
@@ -705,8 +705,8 @@ Global Symbols
 <P><STRONG><a name="[6d]"></a>Soft_IIC_Write_High</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, ads1115.o(i.Soft_IIC_Write_High))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Soft_IIC_Write_High
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Write_Byte
 </UL>
@@ -714,8 +714,8 @@ Global Symbols
 <P><STRONG><a name="[6e]"></a>Soft_IIC_Write_Low</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, ads1115.o(i.Soft_IIC_Write_Low))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Soft_IIC_Write_Low
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Soft_IIC_Write_Byte
 </UL>
@@ -849,8 +849,8 @@ Global Symbols
 <P><STRONG><a name="[7a]"></a>i2cInitSlave</STRONG> (Thumb, 148 bytes, Stack size 56 bytes, dfrobot_i2c_slave.o(i.i2cInitSlave))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = i2cInitSlave &rArr; HAL_I2C_Init &rArr; HAL_RCC_GetPCLKFreq &rArr; __aeabi_uidivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Init
+<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Init
+<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -877,12 +877,12 @@ Global Symbols
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit_IT
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_DeInit
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 <LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ads1115_I2C_Init
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_command
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
@@ -902,8 +902,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = SerialInit &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; HAL_RCC_GetPCLKFreq &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>

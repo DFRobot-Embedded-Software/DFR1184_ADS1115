@@ -1,5 +1,4 @@
 --cpu Cortex-M0+
-".\objects\cs32l010_starterkit.o"
 ".\objects\cs32l010_hal_msp.o"
 ".\objects\cs32l010_it.o"
 ".\objects\main.o"

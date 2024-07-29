@@ -2,7 +2,6 @@
 #define __ads1115_H
 
 #include "cs32l010_hal.h"
-#include "cs32l010_starterkit.h"
 #include "stdbool.h"	
 #include "string.h"	
 
