@@ -14,7 +14,7 @@ A0		A1		add
 
 */
 #define CHANNEL_SELECT_ADDRESS  0x20 //选择ad通道寄存器地址
-#define CHANNEL_DATA_ADDRESS  0x30 //ad数据地址
+#define CHANNEL_DATA_ADDRESS  0x31 //ad数据地址
 #define	DATA_LEN_MAX                    255
 
 

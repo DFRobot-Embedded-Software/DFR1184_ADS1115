@@ -14,7 +14,6 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 SLAVE_ADDRESS = 0x48
-UART_BAUDRATE = 9600
 
 I2C_UART_FLAG = "I2C"
 # I2C_UART_FLAG = "UART"
@@ -23,7 +22,7 @@ if I2C_UART_FLAG == "I2C":
     ads1115 = DFRobot_ADS1115_I2C(1, SLAVE_ADDRESS)
 else:
     from DFRobot_ADS1115 import DFRobot_ADS1115_UART
-    ads1115 = DFRobot_ADS1115_UART("/dev/serial0", UART_BAUDRATE)
+    ads1115 = DFRobot_ADS1115_UART("/dev/serial0")
 
 
 def setup():

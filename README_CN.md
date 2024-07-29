@@ -3,6 +3,7 @@
 
 该产品是一款集成了ADS1115芯片的模块。可通过拨码开关的方式选择I2C、UART通讯方式，也可以通过拨码开关切换模块的I2C地址。外部设备通过gravity接口可以分别获取两组分辨率为0.01mv的电压数据。该模块可以用来精确测量0-10v的直流电压。
 
+![产品效果图片](./resources/images/DFR1103.png)//还未拍摄
 
 ## 目录
 
@@ -32,6 +33,7 @@
    * @fn begin
    * @brief 初始化通讯方式
    * @return 返回初始化状态
+   * @retval Ture no Eerro
    */
   uint8_t begin(void);
 
@@ -67,4 +69,4 @@ RaspberryPi4       |      √       |                 |             |
 
 ## 创作者
 
-Written by lr(), 2024. (Welcome to our website)
+Written by lr(), 2024. (Welcome to our [website](https://www.dfrobot.com/))

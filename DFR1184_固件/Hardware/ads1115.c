@@ -320,9 +320,7 @@ uint8_t IIC_Read(uint8_t addr ,uint8_t reg ,uint8_t * buf ,uint8_t size)
 	IIC_Delay(10);
 	
 	return buf[0];
-	
 }
-
 
 
 void Ads1115_I2C_Init(void)
@@ -398,7 +396,7 @@ double ads1115_get_voltage_val(I2C_HandleTypeDef ads1115_I2cHandle,uint8_t point
     if((ad_val==0x7FFF)|(ad_val==-0x7FFF))// 判断是否超量程了
     {
         ad_val=0;
-        if(mode_flag==1)printf("over!\r\n");
+//        if(mode_flag==1)printf("over!\r\n");
     }
  
     switch((0x0E&configH)>>1)//量程对应的分辨率

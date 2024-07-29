@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Drivers/CMSIS/Include;../Common;../Drivers/CS32L010_HAL_Driver/Inc;../Drivers/CMSIS/Device/CHIPSEA/CS32L010/Include;../Drivers/BSP/CS32L010_StarterKit;../Hardware</IncludePath>
+              <IncludePath>../Drivers/CMSIS/Include;../Common;../Drivers/CS32L010_HAL_Driver/Inc;../Drivers/CMSIS/Device/CHIPSEA/CS32L010/Include;../Drivers/BSP/CS32L010_StarterKit;../Hardware;../User</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

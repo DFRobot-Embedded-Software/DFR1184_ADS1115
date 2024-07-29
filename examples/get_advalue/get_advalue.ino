@@ -1,8 +1,6 @@
 #include <DFRobot_ADS1115.h>
 
-#define I2C_COMMUNICATION  //use I2C for communication, but use the serial port for communication if the line of codes were masked
-
-#define UART_BAUDRATE 9600
+//#define I2C_COMMUNICATION  //use I2C for communication, but use the serial port for communication if the line of codes were masked
 #define MODULE_I2C_ADDRESS 0x48
 
 #ifdef  I2C_COMMUNICATION
@@ -18,11 +16,11 @@
 
 #elif defined(ARDUINO_AVR_UNO) || defined(ESP8266)
   SoftwareSerial mySerial1(4, 5); 
-  DFRobot_ADS1115_UART ads1115(&mySerial1, UART_BAUDRATE);
+  DFRobot_ADS1115_UART ads1115(&mySerial1);
 #elif defined(ESP32)
-  DFRobot_ADS1115_UART ads1115(&Serial1, UART_BAUDRATE,/*rx*/D2,/*tx*/D3);
+  DFRobot_ADS1115_UART ads1115(&Serial1,/*rx*/D2,/*tx*/D3);
 #else
-  DFRobot_ADS1115_UART ads1115(&Serial1, UART_BAUDRATE);
+  DFRobot_ADS1115_UART ads1115(&Serial1);
 #endif
  
 void setup() {
@@ -33,12 +31,11 @@ void setup() {
       Serial.println("EEROR!");
       delay(1000);  
     }  
-    Serial.println("ok!"); 
 }
 
 void loop() {
   unsigned long int data;
-  data= ads1115.get_value(1);
+  data= ads1115.get_value(2);
   Serial.println(data,DEC);
   delay(100);
 }

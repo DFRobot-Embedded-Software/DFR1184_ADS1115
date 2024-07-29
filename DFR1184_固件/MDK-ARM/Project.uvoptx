@@ -161,7 +161,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Hardware\DFRobot_I2C_Slave.c</Filename>
+          <Filename>F:\Gitdata\DFR1184_ADS1115\DFR1184_鍥轰欢\Hardware\DFRobot_I2C_Slave.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Project\../Hardware/DFRobot_I2C_Slave.c\99</Expression>
         </Bp>
@@ -344,7 +344,7 @@
       <GroupNumber>4</GroupNumber>
       <FileNumber>7</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Hardware\ads1115.c</PathWithFileName>
