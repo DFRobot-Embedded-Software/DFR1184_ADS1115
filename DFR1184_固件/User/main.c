@@ -14,25 +14,28 @@
 #include "stdlib.h"
 #include "string.h"
 
-#define UART_MAX_LEN        128
-#define UART_READ_REGBUF    0xBB
-#define UART_WRITE_REGBUF   0xCC
-uint8_t ReceiveData;
-uint8_t ReceiveBuffer[UART_MAX_LEN]= { 0 };
-uint8_t regBuf[DATA_LEN_MAX] = { 0 };
-uint8_t text[10];
-uint8_t uart_buffer[5];
-volatile uint8_t select_pin=0;
-uint8_t ReceiveCount=0;
-uint8_t ReceiveHandleCount=0;
-uint8_t SendBuffer[DATA_LEN_MAX]={0};
-uint32_t  adval;
-bool senddata_flag=0;
-bool addr_change_flag=0;
+#define KEY_A0_PORT GPIOB
+#define KEY_A0_PIN  GPIO_PIN_4
+#define KEY_A1_PORT GPIOB
+#define KEY_A1_PIN  GPIO_PIN_5
+#define KEY_SELECT_PORT GPIOA
+#define KEY_SELECT_PIN  GPIO_PIN_3
+
+
+void SystemClock_Config(void);
+uint8_t text[10]={0};
+uint8_t uart_buffer[5]={0};
 uint8_t Addr0=0,Addr1=0;
 uint8_t Addr0_last=0,Addr1_last=0;
-extern UART_HandleTypeDef huart1;
+uint8_t mode_flag=2;//1为uart 0为iic 2为初始值
+uint32_t  adval=0;
+volatile uint8_t select_pin=0;
+//bool senddata_flag=0;
+bool addr_change_flag=0;
 
+extern UART_HandleTypeDef huart1;
+extern uint8_t ReceiveData;
+extern I2C_HandleTypeDef i2cSlave ;
 /**
  * @brief 按键初始化函数
  * @param void
@@ -43,75 +46,14 @@ void key_init(void){
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 	__HAL_RCC_GPIOB_CLK_ENABLE();
 	GPIO_InitTypeDef gpio_key;
-	gpio_key.Pin    = GPIO_PIN_4|GPIO_PIN_5;
+	gpio_key.Pin    = KEY_A0_PIN|KEY_A1_PIN;
 	gpio_key.Mode	=	GPIO_MODE_INPUT;
 	gpio_key.Debounce.Enable = GPIO_DEBOUNCE_ENABLE; 
 	gpio_key.SlewRate = GPIO_SLEW_RATE_HIGH; 
-	HAL_GPIO_Init(GPIOB, &gpio_key);
-	gpio_key.Pin =GPIO_PIN_3;
-	HAL_GPIO_Init(GPIOA, &gpio_key);
+	HAL_GPIO_Init(KEY_A0_PORT, &gpio_key);
+	gpio_key.Pin =KEY_SELECT_PIN;//选择引脚
+	HAL_GPIO_Init(KEY_SELECT_PORT, &gpio_key);
 }
-
-/**
- * @brief 串口回调函数
- * @param huart
- * @return void
- */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	if(&huart1 == huart){
-		if(ReceiveCount>=UART_MAX_LEN){
-			ReceiveCount%=UART_MAX_LEN;
-		}
-		ReceiveBuffer[ReceiveCount++]=ReceiveData;	
-		HAL_UART_Receive_IT(&huart1, &ReceiveData,1);
-	}	
-	HAL_UART_Receive_IT(&huart1, &ReceiveData,1);	
-}
-/**
- * @brief 串口数据解析
- * @details 串口数据分为如下读写两类:
- * @n 写操作 :
- * @n 发送 : UART_WRITE_REGBUF + 寄存器地址 + 写入数据长度 + 对应长度的数据字节
- * @n 读操作 :UART_READ_REGBUF + 寄存器地址+读取数据长度
- */
-void uart_command(void)
-{
-	if((ReceiveCount-ReceiveHandleCount)>=3){
-		uint8_t* data = &ReceiveBuffer[ReceiveHandleCount];
-		uint8_t type = data[0];
-		uint8_t reg = data[1];
-		uint8_t len = data[2];
-		ReceiveHandleCount+=3;	
-		switch (type)
-		{
-			case UART_WRITE_REGBUF:
-				if((ReceiveCount-ReceiveHandleCount)>=len){
-					memcpy(&regBuf[reg], &data[3], len);
-					if(reg==CHANNEL_SELECT_ADDRESS)
-						select_pin=regBuf[reg];
-					ReceiveHandleCount += len;
-				}
-				break;
-			case UART_READ_REGBUF:
-				
-				if(reg==CHANNEL_DATA_ADDRESS){
-					senddata_flag=1;
-				}
-				break;
-			default:		//数据错误从新接收
-				ReceiveCount = 0;
-				ReceiveHandleCount = 0;
-				break;
-		}	
-		if (ReceiveCount == ReceiveHandleCount) {  
-			ReceiveCount = 0;
-			ReceiveHandleCount = 0;
-	  }		
-	}
-}
-
-
 
 int main(void)
 {
@@ -125,63 +67,61 @@ int main(void)
 	__HAL_RCC_I2C_CLK_ENABLE();
 	key_init();	//按键初始化
 	Ads1115_I2C_Init();//读ads1115的软件IIC引脚初始化
+	SerialAnalysisTimerInit();// /* uart解析任务的定时器初始化 */
+	//拨码以改变地址 改变地址后必须重新上电 才能改变地址
+	Addr0 =HAL_GPIO_ReadPin(KEY_A0_PORT,KEY_A0_PIN)? 0 : 1;
+	Addr1 =HAL_GPIO_ReadPin(KEY_A1_PORT,KEY_A1_PIN)? 0 : 1;
 	
 	while (1){	
-		//改变地址后必须重新上电 才能改变地址
-		Addr1_last=Addr1;
-		Addr0_last=Addr0;
-		last_mode=mode_flag;
-		float   val=0;
-		//判断外部按键以改变地址
-		if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_5))Addr1=0;else	Addr1=1;// 1 Addr1=0
-		if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4))Addr0=0;else	Addr0=1; //1 Addr0=0
 		
-		//尝试不断电改变iic地址，无效
-		if((Addr0_last!=Addr0)||(Addr1_last!=Addr1)){
-			HAL_I2C_DeInit (&i2cSlave);
-			__HAL_RCC_I2C_CLK_ENABLE();
-			i2cInitSlave();
-			i2cIRQConfig();
-			HAL_Delay(10);
-			mode_flag=0;
-		}
+		last_mode=mode_flag;//模式记录 支持热切换模式
 		//判断按键以确定是使用iic还是uart
-		if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_3))
-			mode_flag=1;   //1 uart 0 iic
-		else 
-			mode_flag=0;
-		//模式状态改变 重新初始化iic或者uart
-		if(last_mode!=mode_flag){
-			if(mode_flag==1)LogInit();
+		mode_flag=HAL_GPIO_ReadPin(KEY_SELECT_PORT,KEY_SELECT_PIN)?1:0;
+
+		if(last_mode!=mode_flag){	//模式状态改变 重新初始化iic或者uart
+			if(mode_flag==1){ 
+				HAL_I2C_DeInit(&i2cSlave);  // 调用 HAL 库的去初始化函数  
+				HAL_I2C_MspDeInit(&i2cSlave);//调用 MSP 去初始化函数  
+				memset(uart_buffer,0,sizeof(uart_buffer));//清空数据块
+				SerialInit(9600);
+			}	
 			else if(mode_flag==0){
+				UART_DeInit();
+				AT_flag=0;
+//				senddata_flag=0;
+				memset(uart_buffer,0,sizeof(i2c_buffer));//清空数据块
 				i2cInitSlave();
 				i2cIRQConfig();
 			}
 		}
-		//根据收到的命令决定是采集A1 还是A2通道的数据 函数内部在发送修改指令后10ms后才能读数据
-		if(select_pin==2)//2 A2  1 A1
-			val=ads1115_get_voltage_val(i2c_ads1115,0x01,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_2,CONFIG_REG_L);
-		else if(select_pin==1)
-			val=ads1115_get_voltage_val(i2c_ads1115,0x01,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_1,CONFIG_REG_L);
-		//取到mv后两位，避免浮点数
-		adval=val*100;
-		//串口数据解析 
-		HAL_Delay(10);//大于10ms解析一次 避免串口数据没发完就解析
-		uart_command();
+
+		if ((cs32TimerFlag > 5)&&(mode_flag==1)) {// 连续5ms没有收到数据认为接收结束 解析一次串口数据 此处可确保接收完数据才开始解析
+			uart_command();
+			cs32TimerFlag = 0;
+		}
 		
-		//通过uart或者iic发送电压值
-		if((mode_flag==1)&&(senddata_flag==1)){
-			uart_buffer[0]=adval>>16;//共需要3字节传输
-			uart_buffer[1]=adval>>8;//共需要3字节传输
-			uart_buffer[2]=adval>>0;//共需要3字节传输		
-			HAL_UART_Transmit_IT(&huart1, uart_buffer,3);
-			senddata_flag=0;
-		}		
-		else if(mode_flag==0){//iic
-			i2c_buffer[CHANNEL_DATA_ADDRESS]=adval>>16;//共需要3字节传输
-			i2c_buffer[CHANNEL_DATA_ADDRESS+1]=adval>>8;//共需要3字节传输
-			i2c_buffer[CHANNEL_DATA_ADDRESS+2]=adval>>0;//共需要3字节传输   
-		} 		
+		float   val=0;	
+		if(select_pin==1)//判断是采集A1还是A2通道数据
+			val=ads1115_get_voltage_val(ADS1015_REG_POINTER_CONFIG,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_1,CONFIG_REG_L);
+		else if(select_pin==2)
+			val=ads1115_get_voltage_val(ADS1015_REG_POINTER_CONFIG,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_2,CONFIG_REG_L);
+		adval=val*100;//取到mv后两位，避免浮点数
+		
+ 	
+		i2c_buffer[CHANNEL_DATA_ADDRESS]=adval>>16;//共需要3字节传输
+		i2c_buffer[CHANNEL_DATA_ADDRESS+1]=adval>>8;//共需要3字节传输
+		i2c_buffer[CHANNEL_DATA_ADDRESS+2]=adval>>0;//共需要3字节传输
+		
+		uart_buffer[0]=adval>>16;//共需要3字节传输
+		uart_buffer[1]=adval>>8;//共需要3字节传输
+		uart_buffer[2]=adval>>0;//共需要3字节传输
+		
+		static uint8_t cmd_sendbuf[30]={0};//容易被释放 所以加了static
+		if((mode_flag==1)&&(AT_flag!=0)){
+			sprintf((char*)cmd_sendbuf,"AT+AIN%d=%4.2fmv\r\n",AT_flag,val);
+			AT_flag=0;
+			HAL_UART_Transmit_IT(&huart1, cmd_sendbuf,strlen((char*)cmd_sendbuf));
+		}	
 	}
 }
 
@@ -194,7 +134,7 @@ int main(void)
 void SystemClock_Config(void)
 {
 	
-	RCC_OscInitTypeDef RCC_OscInitStruct = {0};	
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};	
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HIRC;

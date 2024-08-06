@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Drivers/CMSIS/Include;../Common;../Drivers/CS32L010_HAL_Driver/Inc;../Drivers/CMSIS/Device/CHIPSEA/CS32L010/Include;../Hardware;../User</IncludePath>
+              <IncludePath>../Drivers/CMSIS/Include;../Drivers/CMSIS/Device/CHIPSEA/CS32L010/Include;../Common;../Hardware;../User</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -400,21 +400,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Common</GroupName>
-          <Files>
-            <File>
-              <FileName>log.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Common\log.c</FilePath>
-            </File>
-            <File>
-              <FileName>util.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Common\util.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
@@ -426,6 +411,11 @@
               <FileName>DFRobot_I2C_Slave.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hardware\DFRobot_I2C_Slave.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\uart1.c</FilePath>
             </File>
           </Files>
         </Group>

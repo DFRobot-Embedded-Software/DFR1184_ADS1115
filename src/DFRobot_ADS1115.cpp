@@ -21,15 +21,15 @@ int DFRobot_ADS1115::begin(void)
 	return 1;
 }
 
-uint32_t DFRobot_ADS1115::get_value(uint8_t channel)
+double DFRobot_ADS1115::get_value(uint8_t channel)
 {
 	uint8_t pBuf[3];
-	uint32_t ad_value;
+	double ad_value;
  	writeReg(CHANNEL_SELECT_ADDRESS,  &channel, 1);
 	readReg(CHANNEL_DATA_ADDRESS, pBuf, 3);
 	ad_value = pBuf[1];//bug 
 	ad_value=pBuf[0]*65536+(ad_value*256)+pBuf[2];
-	return ad_value;
+	return ad_value/100.0;
 }
 
 
@@ -80,7 +80,9 @@ void DFRobot_ADS1115_UART::readReg(uint8_t reg, void* pBuf, size_t size)
    		DBG("pBuf ERROR!! : null pointer");
  	}
 	uint8_t * _pBuf =(uint8_t *)pBuf;
-
+	while (_serial->available()) {  //Clear the cache
+    	_serial->read(); 
+  	}
 	_serial->write(UART_READ_REGBUF);   // read type
  	_serial->write(reg);   // read reg
   	_serial->write(size);   // read len

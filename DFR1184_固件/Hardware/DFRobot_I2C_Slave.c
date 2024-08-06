@@ -63,6 +63,16 @@ bool regaddr_flag = false;
 
 uint8_t i2c_interrupt = 0;
 
+void HAL_I2C_MspDeInit(I2C_HandleTypeDef *hi2c) {  
+    if (hi2c->Instance == I2C) {  
+        // 关闭 I2C 的时钟  
+        __HAL_RCC_I2C_CLK_DISABLE();  
+        // 将 I2C 引脚去初始化，这里假设使用的是 PB6 和 PB7  
+        HAL_GPIO_DeInit(I2C_SCL_PORT, I2C_SCL_PIN);  // SCL  
+        HAL_GPIO_DeInit(I2C_SDA_PORT, I2C_SDA_PIN);  // SDA  
+    }  
+}
+
 void HAL_I2C_SlaveCallback(I2C_HandleTypeDef *hi2c)
 {
     uint32_t i2c_flag = 0xFF;

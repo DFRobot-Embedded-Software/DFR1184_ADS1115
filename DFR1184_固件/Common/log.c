@@ -17,20 +17,20 @@ extern uint8_t ReceiveData;
   *                the configuration information for the specified UART module.
   * @retval None
   */
-static void Log_UART_SetConfig(UART_HandleTypeDef *huart)
-{
-  /*------- UART-associated registers setting : SCON Configuration ------*/
-  /* Configure the UART Word Length and mode: 
-		 Set the DBAUD bits according to huart->Init.BaudDouble value 
-     Set the SM bits according to huart->Init.WordLength value 
-     Set REN bits according to huart->Init.Mode value */
-  MODIFY_REG(huart->Instance->SCON, (UART_SCON_DBAUD | UART_SCON_SM0_SM1 | UART_SCON_REN), huart->Init.BaudDouble | huart->Init.WordLength | huart->Init.Mode);
+//static void Log_UART_SetConfig(UART_HandleTypeDef *huart)
+//{
+//  /*------- UART-associated registers setting : SCON Configuration ------*/
+//  /* Configure the UART Word Length and mode: 
+//		 Set the DBAUD bits according to huart->Init.BaudDouble value 
+//     Set the SM bits according to huart->Init.WordLength value 
+//     Set REN bits according to huart->Init.Mode value */
+//  MODIFY_REG(huart->Instance->SCON, (UART_SCON_DBAUD | UART_SCON_SM0_SM1 | UART_SCON_REN), huart->Init.BaudDouble | huart->Init.WordLength | huart->Init.Mode);
 
-  /*-------------------------- UART BAUDCR Configuration ---------------------*/
-  huart->Instance->BAUDCR = (((((huart->Init.BaudDouble >> UART_SCON_DBAUD_Pos)+1)*HAL_RCC_GetPCLKFreq())/(32*(huart->Init.BaudRate))-1) & UART_BAUDCR_BRG) | UART_BAUDCR_SELF_BRG;	
+//  /*-------------------------- UART BAUDCR Configuration ---------------------*/
+//  huart->Instance->BAUDCR = (((((huart->Init.BaudDouble >> UART_SCON_DBAUD_Pos)+1)*HAL_RCC_GetPCLKFreq())/(32*(huart->Init.BaudRate))-1) & UART_BAUDCR_BRG) | UART_BAUDCR_SELF_BRG;	
 
-	__HAL_UART_ENABLE_IT(huart, UART_IT_TC | UART_IT_RXNE);
-}
+//	__HAL_UART_ENABLE_IT(huart, UART_IT_TC | UART_IT_RXNE);
+//}
 
 UART_HandleTypeDef huart1 = {0};
 
@@ -45,6 +45,11 @@ void LogInit(void)
 		SerialInit(LOG_SERIAL_BPS);
 #endif
 }
+void mySerialInit(uint32_t baud_rate)
+{
+	SerialInit(9600);
+}
+
 
 void logout(bool success)
 {

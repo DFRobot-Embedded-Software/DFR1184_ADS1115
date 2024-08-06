@@ -36,7 +36,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern UART_HandleTypeDef huart1; 
-
+extern BASETIM_HandleTypeDef sBaseTimHandle;
 /******************************************************************************/
 /*           Cortex-M0+ Processor Interruption and Exception Handlers          */ 
 /******************************************************************************/
@@ -222,7 +222,7 @@ void TIM10_IRQHandler(void)
 void TIM11_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM11_IRQn 0 */
-
+	HAL_BASETIM_IRQHandler(&sBaseTimHandle);
   /* USER CODE END TIM11_IRQn 0 */
 }
 

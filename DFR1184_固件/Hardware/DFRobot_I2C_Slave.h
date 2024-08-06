@@ -25,14 +25,6 @@ A0		A1		add
 #define I2C_SDA_PIN  GPIO_PIN_3
 
 
-/******* i2c register    ********/
-#define I2C_M1_DIRECTION    0
-#define I2C_M1_SPEED        1
-#define I2C_M2_DIRECTION    2
-#define I2C_M2_SPEED        3
-
-
-
 
 /**
  * @brief I2C从机初始化

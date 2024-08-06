@@ -32,7 +32,8 @@ def setup():
 
 
 def loop():
-    print("advaule:%d" % ads1115.get_value(1))
+    channel = 2 #1 A1 2 A2
+    print("channel%d adVaule:%.2f  mv" %channel %ads1115.get_value(channel))
     time.sleep(1)
 
 

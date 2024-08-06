@@ -36,5 +36,5 @@
 void LogInit(void);
 void logout(bool success);
 void panic(const char* func);
-
+void mySerialInit(uint32_t baud_rate);
 #endif /* __XM32F103_LOG_H */

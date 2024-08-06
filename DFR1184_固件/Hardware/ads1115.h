@@ -23,20 +23,6 @@ typedef enum{
 #define IIC_SDA_L()     HAL_GPIO_WritePin(GPIOD,GPIO_PIN_6,GPIO_PIN_RESET)
 
 
-
-//#define IIC_SCL_PIN GPIO_PIN_4
-//#define IIC_SCL_PORT GPIOC
-
-//#define IIC_SDA_PIN GPIO_PIN_3
-//#define IIC_SDA_PORT GPIOC
-
-//#define IIC_SCL_H()     HAL_GPIO_WritePin(GPIOC,GPIO_PIN_4,GPIO_PIN_SET)
-//#define IIC_SCL_L()     HAL_GPIO_WritePin(GPIOC,GPIO_PIN_4,GPIO_PIN_RESET)
-//#define IIC_SDA_H()     HAL_GPIO_WritePin(GPIOC,GPIO_PIN_3,GPIO_PIN_SET)
-//#define IIC_SDA_L()     HAL_GPIO_WritePin(GPIOC,GPIO_PIN_3,GPIO_PIN_RESET)
-
-
-
 void Soft_IIC_Init(void);
 void Soft_IIC_Start(void);
 void Soft_IIC_Stop(void);
@@ -47,19 +33,9 @@ uint8_t Soft_IIC_Write_Byte(uint8_t Byte);
 uint8_t Soft_IIC_Recv_Byte(ACK_STATUS ack_sta);
 
 
-
-
-
-
-
-
-
-
-
-#define ADS1115_WRITE_ADDRESS        0x90
-#define ADS1115_READ_ADDRESS         0x91
-
-#define DEVICE_ADDRESS	    0X90		// 从机设备地址
+#define ADS1115_WRITE_ADDRESS        0x90// 写地址
+#define ADS1115_READ_ADDRESS         0x91// 读地址
+	
 
 #define CONFIG_REG_H     ADS1115_REG_CONFIG_OS_START|\
                          ADS1115_REG_CONFIG_PGA_2|\
@@ -136,10 +112,7 @@ void I2C_Master_Clear_Error(void);
 HAL_StatusTypeDef I2C_Read(uint8_t dev_address,uint8_t reg_address,uint8_t *rdata,uint8_t size);
 HAL_StatusTypeDef I2C_Write(uint8_t dev_address,uint8_t reg_address,uint8_t *wdata,uint8_t size);
 
-extern I2C_HandleTypeDef i2c_ads1115 ;
-extern uint8_t mode_flag;//1为uart 0为iic 2为初始值
-void ads1115_config_register(I2C_HandleTypeDef ads1115_I2cHandle,uint8_t pointADD,uint8_t configH,uint8_t configL);
-int16_t ads1115_read_data(I2C_HandleTypeDef ads1115_I2cHandle);
-double ads1115_get_voltage_val(I2C_HandleTypeDef ads1115_I2cHandle,uint8_t pointADD,uint8_t configH,uint8_t configL);
+void ads1115_config_register(uint8_t pointADD,uint8_t configH,uint8_t configL);
+double ads1115_get_voltage_val(uint8_t pointADD,uint8_t configH,uint8_t configL);
 
 #endif

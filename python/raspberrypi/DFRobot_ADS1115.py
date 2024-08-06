@@ -41,7 +41,7 @@ class DFRobot_ADS1115:
         try:
             self._write_reg(self.CHANNEL_SELECT_ADDRESS,[channel], size=1)
             buf =self._read_reg(self. CHANNEL_DATA_ADDRESS,3)
-            return buf[0]*65536+buf[1]*256+buf[2]  
+            return (buf[0]*65536+buf[1]*256+buf[2])/100.0  
         except :
             logger.error("Please check connect!")
             return 0
@@ -103,6 +103,7 @@ class DFRobot_ADS1115_UART(DFRobot_ADS1115):
 
     def _read_reg(self, reg, size):
         i = 0
+        # self.__serial.flushInput()	# 清空缓冲区
         self.__serial.write(self.int_to_bytes(self.UART_READ_REGBUF, 1))
         self.__serial.write(self.int_to_bytes(reg, 1))
         self.__serial.write(self.int_to_bytes(size, 1))

@@ -1,11 +1,7 @@
 #include "ads1115.h"	
-#define I2C_SPEED_RATE	100   //uint khz
-
-uint8_t mode_flag=2;//1为uart 0为iic 2为初始值
-
-I2C_HandleTypeDef i2c_ads1115= {0};
 
 
+int16_t ads1115_read_data(void);
 /**
  * @brief IIC延时
  * @param  无
@@ -131,13 +127,6 @@ void Soft_IIC_ACK(void)
  */
 void Soft_IIC_NACK(void)
 {
-//    Soft_IIC_Output();
-//    IIC_SCL_L();
-//    IIC_SDA_H();
-//    IIC_Delay(IIC_DELAY_TIME);
-//    IIC_SCL_H();
-//    IIC_Delay(IIC_DELAY_TIME);
-	
 	Soft_IIC_Output();
     IIC_SCL_L();
     IIC_SDA_H();
@@ -155,7 +144,7 @@ void Soft_IIC_NACK(void)
  */
 uint8_t Soft_IIC_Wait_ACK(void)
 {
-    uint8_t wait;
+    uint8_t wait=0;
     Soft_IIC_Output();
     IIC_SDA_H();
     Soft_IIC_Input();
@@ -164,7 +153,7 @@ uint8_t Soft_IIC_Wait_ACK(void)
     while (HAL_GPIO_ReadPin(IIC_SDA_PORT, IIC_SDA_PIN))
     {
         wait++;
-        if (wait > 200)
+        if (wait > 200)//超时判断
         {
 //            Soft_IIC_Stop();
             return 0;
@@ -295,7 +284,7 @@ uint8_t IIC_Read(uint8_t addr ,uint8_t reg ,uint8_t * buf ,uint8_t size)
 	Soft_IIC_Start();    																					// iic begin	
 	Soft_IIC_Write_Byte(addr );
 	while(Soft_IIC_Wait_ACK()){
-		Soft_IIC_Write_Byte(addr ); 															// iic 地址
+		Soft_IIC_Write_Byte(addr); 															// iic 地址
 	}
 	Soft_IIC_Write_Byte(reg);
 	while(Soft_IIC_Wait_ACK()){																		// 寄存器地址
@@ -331,7 +320,7 @@ void Ads1115_I2C_Init(void)
 	GPIO_InitTypeDef  gpioi2c={0};
 	gpioi2c.Pin    = IIC_SCL_PIN;
 	gpioi2c.Mode = GPIO_MODE_OUTPUT; 
-	gpioi2c.OpenDrain = GPIO_OPENDRAIN;// 推挽
+	gpioi2c.OpenDrain = GPIO_OPENDRAIN;// 开漏输出
 	gpioi2c.Debounce.Enable = GPIO_DEBOUNCE_DISABLE; // 禁止输入去抖动
 	gpioi2c.SlewRate = GPIO_SLEW_RATE_HIGH; // 电压转换速率
 	gpioi2c.DrvStrength = GPIO_DRV_STRENGTH_HIGH; // 驱动强度
@@ -353,12 +342,12 @@ void Ads1115_I2C_Init(void)
 
 
 
-void ads1115_config_register(I2C_HandleTypeDef ads1115_I2cHandle,uint8_t pointADD,uint8_t configH,uint8_t configL)
+void ads1115_config_register(uint8_t pointADD,uint8_t configH,uint8_t configL)
 {
     uint8_t reg_data[2]={configH,configL};	
 	IIC_Write(ADS1115_WRITE_ADDRESS,pointADD, reg_data, 2);
 }
-int16_t ads1115_read_data(I2C_HandleTypeDef ads1115_I2cHandle)
+int16_t ads1115_read_data(void)
 {
     int16_t data;
     uint8_t rx_data[2]={0};
@@ -385,14 +374,14 @@ int16_t ads1115_read_data(I2C_HandleTypeDef ads1115_I2cHandle)
 	
 }
  
-double ads1115_get_voltage_val(I2C_HandleTypeDef ads1115_I2cHandle,uint8_t pointADD,uint8_t configH,uint8_t configL)
+double ads1115_get_voltage_val(uint8_t pointADD,uint8_t configH,uint8_t configL)
 {
     double val;
     int16_t ad_val;
  
-    ads1115_config_register(ads1115_I2cHandle,pointADD,configH,configL);//01 D4 83
-    HAL_Delay(10);
-    ad_val=ads1115_read_data(ads1115_I2cHandle);
+    ads1115_config_register(pointADD,configH,configL);//01 D4 83
+    HAL_Delay(20);//必须大于这个20ms才能保证读到数据的准确性
+    ad_val=ads1115_read_data();
     if((ad_val==0x7FFF)|(ad_val==-0x7FFF))// 判断是否超量程了
     {
         ad_val=0;

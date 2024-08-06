@@ -53,7 +53,6 @@ Arduino Uno        |      √       |                 |             |
 Arduino MEGA2560   |      √       |                 |             |
 Arduino Leonardo   |      √       |                 |             |
 FireBeetle-ESP32   |      √       |                 |             |
-Micro:bit          |      √       | nonsupport uart |             |
 RaspberryPi4       |      √       |                 |             |
 
 - Python version

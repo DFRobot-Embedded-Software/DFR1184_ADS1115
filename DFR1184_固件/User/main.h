@@ -22,15 +22,14 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "io_mapping.h"
-#include "log.h"
-#include "util.h"
+//#include "io_mapping.h"
+//#include "log.h"
+//#include "util.h"
 #include <stdbool.h>
 
 #include "ads1115.h"
-//#include "myiic_slave.h"	
-//#include "myiic_slave.h"	
 #include "DFRobot_I2C_Slave.h"
+#include "uart1.h"	
 /* USER CODE END Includes */
 
 
