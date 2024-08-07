@@ -23,8 +23,8 @@ int DFRobot_ADS1115::begin(void)
 
 double DFRobot_ADS1115::get_value(uint8_t channel)
 {
-	uint8_t pBuf[3];
-	double ad_value;
+	uint8_t pBuf[3]={0};
+	double ad_value=0;
  	writeReg(CHANNEL_SELECT_ADDRESS,  &channel, 1);
 	readReg(CHANNEL_DATA_ADDRESS, pBuf, 3);
 	ad_value = pBuf[1];//bug 
