@@ -57,7 +57,7 @@ void key_init(void){
 
 int main(void)
 {
-	static uint8_t last_mode=0;
+	
     /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
     HAL_Init();		
     /* Configure the system clock to HIRC 24MHz*/
@@ -69,15 +69,24 @@ int main(void)
 	Ads1115_I2C_Init();//读ads1115的软件IIC引脚初始化
 	SerialAnalysisTimerInit();// /* uart解析任务的定时器初始化 */
 	//拨码以改变地址 改变地址后必须重新上电 才能改变地址
+	HAL_Delay(100);
 	Addr0 =HAL_GPIO_ReadPin(KEY_A0_PORT,KEY_A0_PIN)? 0 : 1;
 	Addr1 =HAL_GPIO_ReadPin(KEY_A1_PORT,KEY_A1_PIN)? 0 : 1;
+	mode_flag=HAL_GPIO_ReadPin(KEY_SELECT_PORT,KEY_SELECT_PIN)?1:0;
+	if(mode_flag==1){ 
+		SerialInit(9600);
+	}else if(mode_flag==0){
+		i2cInitSlave();
+		i2cIRQConfig();
+	}
 	
 	while (1){	
 		
-		last_mode=mode_flag;//模式记录 支持热切换模式
+		#if 0	//不支持热切换模式
+		static uint8_t last_mode=0;
+		last_mode=mode_flag;//模式记录 
 		//判断按键以确定是使用iic还是uart
 		mode_flag=HAL_GPIO_ReadPin(KEY_SELECT_PORT,KEY_SELECT_PIN)?1:0;
-
 		if(last_mode!=mode_flag){	//模式状态改变 重新初始化iic或者uart
 			if(mode_flag==1){ 
 				HAL_I2C_DeInit(&i2cSlave);  // 调用 HAL 库的去初始化函数  
@@ -88,13 +97,14 @@ int main(void)
 			else if(mode_flag==0){
 				UART_DeInit();
 				AT_flag=0;
-//				senddata_flag=0;
+				senddata_flag=0;
 				memset(uart_buffer,0,sizeof(i2c_buffer));//清空数据块
 				i2cInitSlave();
 				i2cIRQConfig();
 			}
 		}
-
+		#endif
+				
 		if ((cs32TimerFlag > 5)&&(mode_flag==1)) {// 连续5ms没有收到数据认为接收结束 解析一次串口数据 此处可确保接收完数据才开始解析
 			uart_command();
 			cs32TimerFlag = 0;
