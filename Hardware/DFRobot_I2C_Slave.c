@@ -97,8 +97,7 @@ void HAL_I2C_SlaveCallback(I2C_HandleTypeDef *hi2c)
                 }
                 r_address_offset = r_address;
                 regaddr_flag = false;
-            }else{
-                // 第二个数据
+            }else{ // 第二个数据
                 // 寄存器溢出
                 if((r_address_offset + 1) > DATA_LEN_MAX){
                     r_address_offset = 0;
@@ -108,11 +107,12 @@ void HAL_I2C_SlaveCallback(I2C_HandleTypeDef *hi2c)
 //				if(r_address_offset==r_address)
 				select_pin=pData[CHANNEL_SELECT_ADDRESS];//写入通道选择
                 rx_count++;  // 每次接收到的数据个数
+//				begin_trans=true;
+//				regaddr_flag = true;
             }
             break;
         case I2C_FLAG_SLAVE_STOP_RESTART:
             begin_trans = false;
-
             break;
         case I2C_FLAG_SLAVE_TX_SLAW_ACK: // A8H
             // 发送 pData register 处的寄存器

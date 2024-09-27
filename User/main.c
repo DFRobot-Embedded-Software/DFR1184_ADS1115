@@ -116,7 +116,6 @@ int main(void)
 		else if(select_pin==2)
 			val=ads1115_get_voltage_val(ADS1015_REG_POINTER_CONFIG,CONFIG_REG_H|ADS1115_REG_CONFIG_MUX_SINGLE_2,CONFIG_REG_L);
 		adval=val*100;//取到mv后两位，避免浮点数
-		
  	
 		i2c_buffer[CHANNEL_DATA_ADDRESS]=adval>>16;//共需要3字节传输
 		i2c_buffer[CHANNEL_DATA_ADDRESS+1]=adval>>8;//共需要3字节传输
